@@ -1,0 +1,155 @@
+[
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "seaborn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "seaborn",
+        "description": "seaborn",
+        "detail": "seaborn",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
+        "label": "StandardScaler",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "LabelEncoder",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "accuracy_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "KNeighborsClassifier",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
+        "documentation": {}
+    },
+    {
+        "label": "under_sampling",
+        "importPath": "imblearn",
+        "description": "imblearn",
+        "isExtraImport": true,
+        "detail": "imblearn",
+        "documentation": {}
+    },
+    {
+        "label": "over_sampling",
+        "importPath": "imblearn",
+        "description": "imblearn",
+        "isExtraImport": true,
+        "detail": "imblearn",
+        "documentation": {}
+    },
+    {
+        "label": "SMOTE",
+        "importPath": "imblearn.over_sampling",
+        "description": "imblearn.over_sampling",
+        "isExtraImport": true,
+        "detail": "imblearn.over_sampling",
+        "documentation": {}
+    },
+    {
+        "label": "warnings",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "warnings",
+        "description": "warnings",
+        "detail": "warnings",
+        "documentation": {}
+    },
+    {
+        "label": "read_root",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def read_root():\n    return {\"Hello\": \"World\"}",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "app = FastAPI()\n@app.get(\"/\")\ndef read_root():\n    return {\"Hello\": \"World\"}",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "#pd.options.display_float_format",
+        "kind": 5,
+        "importPath": "models.modeloSimilaridade",
+        "description": "models.modeloSimilaridade",
+        "peekOfCode": "#pd.options.display_float_format = '{:.2f}'.format",
+        "detail": "models.modeloSimilaridade",
+        "documentation": {}
+    }
+]
