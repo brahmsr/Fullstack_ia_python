@@ -327,11 +327,59 @@
         "documentation": {}
     },
     {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Float",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "DateTime",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "create_engine",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
         "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
         "documentation": {}
     },
     {
@@ -471,6 +519,55 @@
         "importPath": "ollama",
         "description": "ollama",
         "detail": "ollama",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "models.sensor_data",
+        "description": "models.sensor_data",
+        "isExtraImport": true,
+        "detail": "models.sensor_data",
+        "documentation": {}
+    },
+    {
+        "label": "SensorData",
+        "importPath": "models.sensor_data",
+        "description": "models.sensor_data",
+        "isExtraImport": true,
+        "detail": "models.sensor_data",
         "documentation": {}
     },
     {
@@ -847,6 +944,24 @@
         "documentation": {}
     },
     {
+        "label": "SensorData",
+        "kind": 6,
+        "importPath": "src.models.sensor_data",
+        "description": "src.models.sensor_data",
+        "peekOfCode": "class SensorData(Base):\n    __tablename__ = \"sensorsData\"\n    id = Column(Integer, primary_key=True)\n    created_at = Column(DateTime)\n    z_rms_velocity_in_s = Column(Float)\n    z_rms_velocity_mm_s = Column(Float)\n    temperature_f = Column(Float)\n    temperature_c = Column(Float)\n    x_rms_velocity_in_s = Column(Float)\n    x_rms_velocity_mm_s = Column(Float)",
+        "detail": "src.models.sensor_data",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "src.models.sensor_data",
+        "description": "src.models.sensor_data",
+        "peekOfCode": "Base = declarative_base()\nclass SensorData(Base):\n    __tablename__ = \"sensorsData\"\n    id = Column(Integer, primary_key=True)\n    created_at = Column(DateTime)\n    z_rms_velocity_in_s = Column(Float)\n    z_rms_velocity_mm_s = Column(Float)\n    temperature_f = Column(Float)\n    temperature_c = Column(Float)\n    x_rms_velocity_in_s = Column(Float)",
+        "detail": "src.models.sensor_data",
+        "documentation": {}
+    },
+    {
         "label": "ChunkService",
         "kind": 6,
         "importPath": "src.services.chunk_service",
@@ -1000,6 +1115,24 @@
         "documentation": {}
     },
     {
+        "label": "parse_float",
+        "kind": 2,
+        "importPath": "src.services.sensor_service",
+        "description": "src.services.sensor_service",
+        "peekOfCode": "def parse_float(val):\n    if val == '' or val is None:\n        return None\n    try:\n        return float(val)\n    except ValueError:\n        return None\ndef importar_sensor_data(csv_path):\n    print(f\"Creating tables if they don't exist...\")\n    Base.metadata.create_all(bind=engine)",
+        "detail": "src.services.sensor_service",
+        "documentation": {}
+    },
+    {
+        "label": "importar_sensor_data",
+        "kind": 2,
+        "importPath": "src.services.sensor_service",
+        "description": "src.services.sensor_service",
+        "peekOfCode": "def importar_sensor_data(csv_path):\n    print(f\"Creating tables if they don't exist...\")\n    Base.metadata.create_all(bind=engine)\n    print(f\"Reading CSV from {csv_path}...\")\n    session = SessionLocal()\n    try:\n        # previnir inserção duplicada\n        if session.query(SensorData).first():\n            print(\"A tabela do Sensor já tem dados. Pulando import...\")\n            return",
+        "detail": "src.services.sensor_service",
+        "documentation": {}
+    },
+    {
         "label": "#pd.options.display_float_format",
         "kind": 5,
         "importPath": "src.services.similaridade_service",
@@ -1049,7 +1182,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "pdf_service = PDFService()\ndocumentos = pdf_service.carregar_documentos(config[\"DATA_DIR\"])\nchunk_service = ChunkService()\nchunks = chunk_service.gerar_chunks(documentos)\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])",
+        "peekOfCode": "pdf_service = PDFService()\ndocumentos = pdf_service.carregar_documentos(config[\"DATA_DIR\"])\nprint(\"Gerando chunks...\")\nchunk_service = ChunkService()\nchunks = chunk_service.gerar_chunks(documentos)\n# embeddings + vectorstore\nprint(\"Gerando embeddings e vectorstore...\")\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()",
         "detail": "src.main",
         "documentation": {}
     },
@@ -1058,7 +1191,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "documentos = pdf_service.carregar_documentos(config[\"DATA_DIR\"])\nchunk_service = ChunkService()\nchunks = chunk_service.gerar_chunks(documentos)\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\nllm_service = LLMService(config[\"MODEL\"])",
+        "peekOfCode": "documentos = pdf_service.carregar_documentos(config[\"DATA_DIR\"])\nprint(\"Gerando chunks...\")\nchunk_service = ChunkService()\nchunks = chunk_service.gerar_chunks(documentos)\n# embeddings + vectorstore\nprint(\"Gerando embeddings e vectorstore...\")\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)",
         "detail": "src.main",
         "documentation": {}
     },
@@ -1067,7 +1200,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "chunk_service = ChunkService()\nchunks = chunk_service.gerar_chunks(documentos)\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\nllm_service = LLMService(config[\"MODEL\"])\nrag = RAGService(",
+        "peekOfCode": "chunk_service = ChunkService()\nchunks = chunk_service.gerar_chunks(documentos)\n# embeddings + vectorstore\nprint(\"Gerando embeddings e vectorstore...\")\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])",
         "detail": "src.main",
         "documentation": {}
     },
@@ -1076,7 +1209,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "chunks = chunk_service.gerar_chunks(documentos)\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\nllm_service = LLMService(config[\"MODEL\"])\nrag = RAGService(\n    llm_service,",
+        "peekOfCode": "chunks = chunk_service.gerar_chunks(documentos)\n# embeddings + vectorstore\nprint(\"Gerando embeddings e vectorstore...\")\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\n# RAG",
         "detail": "src.main",
         "documentation": {}
     },
@@ -1085,7 +1218,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "embedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\nllm_service = LLMService(config[\"MODEL\"])\nrag = RAGService(\n    llm_service,\n    vector_service",
+        "peekOfCode": "embedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\n# RAG\nprint(\"Iniciando RAG...\")\nllm_service = LLMService(config[\"MODEL\"])\nrag = RAGService(",
         "detail": "src.main",
         "documentation": {}
     },
@@ -1094,7 +1227,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "vector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\nllm_service = LLMService(config[\"MODEL\"])\nrag = RAGService(\n    llm_service,\n    vector_service\n)",
+        "peekOfCode": "vector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\n# RAG\nprint(\"Iniciando RAG...\")\nllm_service = LLMService(config[\"MODEL\"])\nrag = RAGService(\n    llm_service,",
         "detail": "src.main",
         "documentation": {}
     },

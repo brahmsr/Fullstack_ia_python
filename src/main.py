@@ -29,8 +29,9 @@ vector_service = VectorStoreService(
 )
 
 vector_service.criar(chunks)
-
+print("Vectorstore criado")
 vector_service.salvar(config["VECTOR_DIR"])
+print("Vectorstore salvo")
 
 # RAG
 print("Iniciando RAG...")
