@@ -592,6 +592,54 @@
         "documentation": {}
     },
     {
+        "label": "PDFService",
+        "importPath": "services.pdf_service",
+        "description": "services.pdf_service",
+        "isExtraImport": true,
+        "detail": "services.pdf_service",
+        "documentation": {}
+    },
+    {
+        "label": "ChunkService",
+        "importPath": "services.chunk_service",
+        "description": "services.chunk_service",
+        "isExtraImport": true,
+        "detail": "services.chunk_service",
+        "documentation": {}
+    },
+    {
+        "label": "EmbeddingService",
+        "importPath": "services.embedding_service",
+        "description": "services.embedding_service",
+        "isExtraImport": true,
+        "detail": "services.embedding_service",
+        "documentation": {}
+    },
+    {
+        "label": "VectorStoreService",
+        "importPath": "services.vectorstore_service",
+        "description": "services.vectorstore_service",
+        "isExtraImport": true,
+        "detail": "services.vectorstore_service",
+        "documentation": {}
+    },
+    {
+        "label": "LLMService",
+        "importPath": "services.llm_service",
+        "description": "services.llm_service",
+        "isExtraImport": true,
+        "detail": "services.llm_service",
+        "documentation": {}
+    },
+    {
+        "label": "RAGService",
+        "importPath": "services.rag_service",
+        "description": "services.rag_service",
+        "isExtraImport": true,
+        "detail": "services.rag_service",
+        "documentation": {}
+    },
+    {
         "label": "escape",
         "kind": 2,
         "importPath": ".venv.Scripts.dumppdf",
@@ -801,10 +849,10 @@
     {
         "label": "ChunkService",
         "kind": 6,
-        "importPath": "src.services.chunk.service",
-        "description": "src.services.chunk.service",
+        "importPath": "src.services.chunk_service",
+        "description": "src.services.chunk_service",
         "peekOfCode": "class ChunkService:\n    def __init__(self):\n        self.splitter = RecursiveCharacterTextSplitter(\n            chunk_size=1000, #aprox 1k caractere por bloco\n            chunk_overlap=200 #sobreposição em aprox 200 caracteres (continuidade)\n        )\n    def gerar_chunks(self, documentos):\n        return self.splitter.split_documents(documentos)",
-        "detail": "src.services.chunk.service",
+        "detail": "src.services.chunk_service",
         "documentation": {}
     },
     {
@@ -909,82 +957,64 @@
     {
         "label": "EmbeddingService",
         "kind": 6,
-        "importPath": "src.services.embeddings.service",
-        "description": "src.services.embeddings.service",
+        "importPath": "src.services.embedding_service",
+        "description": "src.services.embedding_service",
         "peekOfCode": "class EmbeddingService:\n    def __init__(self, model):\n        self.embeddings = OllamaEmbeddings(\n            model=model\n        )\n    def get_embeddings(self):\n        return self.embeddings",
-        "detail": "src.services.embeddings.service",
+        "detail": "src.services.embedding_service",
         "documentation": {}
     },
     {
         "label": "LLMService",
         "kind": 6,
-        "importPath": "src.services.llm.service",
-        "description": "src.services.llm.service",
+        "importPath": "src.services.llm_service",
+        "description": "src.services.llm_service",
         "peekOfCode": "class LLMService:\n    def __init__(self, model):\n        self.llm = ChatOllama(\n            model=model,\n            temperature=0\n        )\n    def get_llm(self):\n        return self.llm",
-        "detail": "src.services.llm.service",
+        "detail": "src.services.llm_service",
         "documentation": {}
     },
     {
-        "label": "model",
-        "kind": 5,
-        "importPath": "src.services.ollama.service",
-        "description": "src.services.ollama.service",
-        "peekOfCode": "model = config[\"MODEL\"].strip()\nembedding_model = config[\"EMBEDDING_MODEL\"].strip()\nprint(f\"Baixando o modelo {model}\")\ntry:\n    for progress in ollama.pull(model, stream=True):\n        status = progress.get(\"status\", \"\")\n        if \"completed\" in progress and \"total\" in progress:\n            total = progress[\"total\"]\n            completed = progress[\"completed\"]\n            percent = completed / total * 100",
-        "detail": "src.services.ollama.service",
-        "documentation": {}
-    },
-    {
-        "label": "embedding_model",
-        "kind": 5,
-        "importPath": "src.services.ollama.service",
-        "description": "src.services.ollama.service",
-        "peekOfCode": "embedding_model = config[\"EMBEDDING_MODEL\"].strip()\nprint(f\"Baixando o modelo {model}\")\ntry:\n    for progress in ollama.pull(model, stream=True):\n        status = progress.get(\"status\", \"\")\n        if \"completed\" in progress and \"total\" in progress:\n            total = progress[\"total\"]\n            completed = progress[\"completed\"]\n            percent = completed / total * 100\n            bar = \"█\" * int(percent / 2)",
-        "detail": "src.services.ollama.service",
-        "documentation": {}
-    },
-    {
-        "label": "response",
-        "kind": 5,
-        "importPath": "src.services.ollama.service",
-        "description": "src.services.ollama.service",
-        "peekOfCode": "response = ollama.generate(model=config[\"MODEL\"], prompt='você está vivo?')\nprint(response['response'])",
-        "detail": "src.services.ollama.service",
+        "label": "OllamaService",
+        "kind": 6,
+        "importPath": "src.services.ollama_service",
+        "description": "src.services.ollama_service",
+        "peekOfCode": "class OllamaService:\n    print(\"Baixando o modelo...\")\n    with open (\"config/config.json\", \"r\") as f:\n        config = json.load(f)\n    model = config[\"MODEL\"].strip()\n    embedding_model = config[\"EMBEDDING_MODEL\"].strip()\n    print(f\"Baixando o modelo {model}\")\n    try:\n        for progress in ollama.pull(model, stream=True):\n            status = progress.get(\"status\", \"\")",
+        "detail": "src.services.ollama_service",
         "documentation": {}
     },
     {
         "label": "PDFService",
         "kind": 6,
-        "importPath": "src.services.pdf.service",
-        "description": "src.services.pdf.service",
+        "importPath": "src.services.pdf_service",
+        "description": "src.services.pdf_service",
         "peekOfCode": "class PDFService:\n    def carregar_documentos(self, data_dir):\n        documentos = []\n        for arquivo in os.listdir(data_dir):\n            if arquivo.endswith(\".pdf\"):\n                loader = UnstructuredPDFLoader(\n                    os.path.join(data_dir, arquivo),\n                    strategy=\"hi_res\",\n                    extract_images_in_pdf=True,\n                    languages=[\"por\"]",
-        "detail": "src.services.pdf.service",
+        "detail": "src.services.pdf_service",
         "documentation": {}
     },
     {
         "label": "RAGService",
         "kind": 6,
-        "importPath": "src.services.rag.service",
-        "description": "src.services.rag.service",
+        "importPath": "src.services.rag_service",
+        "description": "src.services.rag_service",
         "peekOfCode": "class RAGService:\n    def __init__(self, llm_service, vectorstore_service):\n        self.llm = llm_service.get_llm()\n        self.retriever = vectorstore_service.get_retriever()\n        self.chain = RetrievalQA.from_chain_type(\n            llm=self.llm,\n            retriever=self.retriever,\n            chain_type=\"stuff\"\n        )\n    def perguntar(self, pergunta: str):",
-        "detail": "src.services.rag.service",
+        "detail": "src.services.rag_service",
         "documentation": {}
     },
     {
         "label": "#pd.options.display_float_format",
         "kind": 5,
-        "importPath": "src.services.similaridade.service",
-        "description": "src.services.similaridade.service",
+        "importPath": "src.services.similaridade_service",
+        "description": "src.services.similaridade_service",
         "peekOfCode": "#pd.options.display_float_format = '{:.2f}'.format",
-        "detail": "src.services.similaridade.service",
+        "detail": "src.services.similaridade_service",
         "documentation": {}
     },
     {
         "label": "VectorStoreService",
         "kind": 6,
-        "importPath": "src.services.vectorstore.service",
-        "description": "src.services.vectorstore.service",
+        "importPath": "src.services.vectorstore_service",
+        "description": "src.services.vectorstore_service",
         "peekOfCode": "class VectorStoreService:\n    def __init__(self, embeddings):\n        self.embeddings = embeddings\n        self.vectorstore = None\n    def criar_vectorstore(self, chunks):\n        return FAISS.from_documents(chunks, self.embeddings)\n    def salvar_vectorstore(self, pasta):\n        self.vectorstore.save_local(pasta)\n    def carregar_vectorstore(self, pasta):\n        self.vectorstore = FAISS.load_local(",
-        "detail": "src.services.vectorstore.service",
+        "detail": "src.services.vectorstore_service",
         "documentation": {}
     },
     {
@@ -1012,6 +1042,78 @@
         "description": "src.database",
         "peekOfCode": "SessionLocal = sessionmaker(bind=engine)",
         "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "pdf_service",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "pdf_service = PDFService()\ndocumentos = pdf_service.carregar_documentos(config[\"DATA_DIR\"])\nchunk_service = ChunkService()\nchunks = chunk_service.gerar_chunks(documentos)\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "documentos",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "documentos = pdf_service.carregar_documentos(config[\"DATA_DIR\"])\nchunk_service = ChunkService()\nchunks = chunk_service.gerar_chunks(documentos)\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\nllm_service = LLMService(config[\"MODEL\"])",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "chunk_service",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "chunk_service = ChunkService()\nchunks = chunk_service.gerar_chunks(documentos)\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\nllm_service = LLMService(config[\"MODEL\"])\nrag = RAGService(",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "chunks",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "chunks = chunk_service.gerar_chunks(documentos)\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\nllm_service = LLMService(config[\"MODEL\"])\nrag = RAGService(\n    llm_service,",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "embedding_service",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "embedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\nllm_service = LLMService(config[\"MODEL\"])\nrag = RAGService(\n    llm_service,\n    vector_service",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "vector_service",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "vector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\nllm_service = LLMService(config[\"MODEL\"])\nrag = RAGService(\n    llm_service,\n    vector_service\n)",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "llm_service",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "llm_service = LLMService(config[\"MODEL\"])\nrag = RAGService(\n    llm_service,\n    vector_service\n)\nprint(\n    rag.perguntar(\n        \"Como corrigir o problema de cocked_rotor?\"\n    )\n)",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "rag",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "rag = RAGService(\n    llm_service,\n    vector_service\n)\nprint(\n    rag.perguntar(\n        \"Como corrigir o problema de cocked_rotor?\"\n    )\n)",
+        "detail": "src.main",
         "documentation": {}
     }
 ]
