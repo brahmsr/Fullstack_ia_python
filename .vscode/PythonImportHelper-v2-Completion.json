@@ -303,6 +303,177 @@
         "documentation": {}
     },
     {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "RecursiveCharacterTextSplitter",
+        "importPath": "langchain_text_splitters",
+        "description": "langchain_text_splitters",
+        "isExtraImport": true,
+        "detail": "langchain_text_splitters",
+        "documentation": {}
+    },
+    {
+        "label": "RecursiveCharacterTextSplitter",
+        "importPath": "langchain_text_splitters",
+        "description": "langchain_text_splitters",
+        "isExtraImport": true,
+        "detail": "langchain_text_splitters",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "RetrievalQA",
+        "importPath": "langchain_classic.chains",
+        "description": "langchain_classic.chains",
+        "isExtraImport": true,
+        "detail": "langchain_classic.chains",
+        "documentation": {}
+    },
+    {
+        "label": "RetrievalQA",
+        "importPath": "langchain_classic.chains",
+        "description": "langchain_classic.chains",
+        "isExtraImport": true,
+        "detail": "langchain_classic.chains",
+        "documentation": {}
+    },
+    {
+        "label": "ChatOllama",
+        "importPath": "langchain_ollama",
+        "description": "langchain_ollama",
+        "isExtraImport": true,
+        "detail": "langchain_ollama",
+        "documentation": {}
+    },
+    {
+        "label": "OllamaEmbeddings",
+        "importPath": "langchain_ollama",
+        "description": "langchain_ollama",
+        "isExtraImport": true,
+        "detail": "langchain_ollama",
+        "documentation": {}
+    },
+    {
+        "label": "OllamaEmbeddings",
+        "importPath": "langchain_ollama",
+        "description": "langchain_ollama",
+        "isExtraImport": true,
+        "detail": "langchain_ollama",
+        "documentation": {}
+    },
+    {
+        "label": "ChatOllama",
+        "importPath": "langchain_ollama",
+        "description": "langchain_ollama",
+        "isExtraImport": true,
+        "detail": "langchain_ollama",
+        "documentation": {}
+    },
+    {
+        "label": "UnstructuredPDFLoader",
+        "importPath": "langchain_community.document_loaders",
+        "description": "langchain_community.document_loaders",
+        "isExtraImport": true,
+        "detail": "langchain_community.document_loaders",
+        "documentation": {}
+    },
+    {
+        "label": "UnstructuredPDFLoader",
+        "importPath": "langchain_community.document_loaders",
+        "description": "langchain_community.document_loaders",
+        "isExtraImport": true,
+        "detail": "langchain_community.document_loaders",
+        "documentation": {}
+    },
+    {
+        "label": "FAISS",
+        "importPath": "langchain_community.vectorstores",
+        "description": "langchain_community.vectorstores",
+        "isExtraImport": true,
+        "detail": "langchain_community.vectorstores",
+        "documentation": {}
+    },
+    {
+        "label": "FAISS",
+        "importPath": "langchain_community.vectorstores",
+        "description": "langchain_community.vectorstores",
+        "isExtraImport": true,
+        "detail": "langchain_community.vectorstores",
+        "documentation": {}
+    },
+    {
+        "label": "ollama",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "ollama",
+        "description": "ollama",
+        "detail": "ollama",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -418,24 +589,6 @@
         "importPath": "warnings",
         "description": "warnings",
         "detail": "warnings",
-        "documentation": {}
-    },
-    {
-        "label": "ollama",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "ollama",
-        "description": "ollama",
-        "detail": "ollama",
-        "documentation": {}
-    },
-    {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
         "documentation": {}
     },
     {
@@ -612,55 +765,253 @@
     {
         "label": "read_root",
         "kind": 2,
-        "importPath": "api.main",
-        "description": "api.main",
+        "importPath": "src.api.main",
+        "description": "src.api.main",
         "peekOfCode": "def read_root():\n    return {\"Hello\": \"World\"}",
-        "detail": "api.main",
+        "detail": "src.api.main",
         "documentation": {}
     },
     {
         "label": "app",
         "kind": 5,
-        "importPath": "api.main",
-        "description": "api.main",
+        "importPath": "src.api.main",
+        "description": "src.api.main",
         "peekOfCode": "app = FastAPI()\n@app.get(\"/\")\ndef read_root():\n    return {\"Hello\": \"World\"}",
-        "detail": "api.main",
+        "detail": "src.api.main",
         "documentation": {}
     },
     {
-        "label": "#pd.options.display_float_format",
+        "label": "Documento",
+        "kind": 6,
+        "importPath": "src.models.documento",
+        "description": "src.models.documento",
+        "peekOfCode": "class Documento(Base):\n    __tablename__ = \"documentos\"\n    id = Column(Integer, primary_key=True)\n    filename = Column(String, nullable=False)\n    chunk = Column(String, nullable=False)\n    source = Column(String, nullable=False)\n    created_at = Column(DateTime, default=datetime.now)\n    edited_at = Column(DateTime, onupdate=datetime.now)",
+        "detail": "src.models.documento",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
         "kind": 5,
-        "importPath": "models.modeloSimilaridade",
-        "description": "models.modeloSimilaridade",
-        "peekOfCode": "#pd.options.display_float_format = '{:.2f}'.format",
-        "detail": "models.modeloSimilaridade",
+        "importPath": "src.models.documento",
+        "description": "src.models.documento",
+        "peekOfCode": "Base = declarative_base()\nclass Documento(Base):\n    __tablename__ = \"documentos\"\n    id = Column(Integer, primary_key=True)\n    filename = Column(String, nullable=False)\n    chunk = Column(String, nullable=False)\n    source = Column(String, nullable=False)\n    created_at = Column(DateTime, default=datetime.now)\n    edited_at = Column(DateTime, onupdate=datetime.now)",
+        "detail": "src.models.documento",
+        "documentation": {}
+    },
+    {
+        "label": "ChunkService",
+        "kind": 6,
+        "importPath": "src.services.chunk.service",
+        "description": "src.services.chunk.service",
+        "peekOfCode": "class ChunkService:\n    def __init__(self):\n        self.splitter = RecursiveCharacterTextSplitter(\n            chunk_size=1000, #aprox 1k caractere por bloco\n            chunk_overlap=200 #sobreposição em aprox 200 caracteres (continuidade)\n        )\n    def gerar_chunks(self, documentos):\n        return self.splitter.split_documents(documentos)",
+        "detail": "src.services.chunk.service",
+        "documentation": {}
+    },
+    {
+        "label": "carregar_cortar_pdfs",
+        "kind": 2,
+        "importPath": "src.services.criarVectorStore",
+        "description": "src.services.criarVectorStore",
+        "peekOfCode": "def carregar_cortar_pdfs(data_dir):\n    all_docs = []\n    for filename in os.listdir(data_dir):\n        if filename.endswith(\".pdf\"):\n            loader = UnstructuredPDFLoader(\n                os.path.join(data_dir, filename),\n                strategy=\"hi_res\",\n                extract_images_in_pdf=True,\n                languages=[\"por\"])\n            docs = loader.load()",
+        "detail": "src.services.criarVectorStore",
+        "documentation": {}
+    },
+    {
+        "label": "criar_vectorstore",
+        "kind": 2,
+        "importPath": "src.services.criarVectorStore",
+        "description": "src.services.criarVectorStore",
+        "peekOfCode": "def criar_vectorstore(chunks, vectorstoreDir):\n    embeddings = OllamaEmbeddings(model=config[\"EMBEDDING_MODEL\"]) #instanciando o modelo de embeddings (vetores)\n    vectorstore = FAISS.from_documents(chunks, embeddings) # cria o vetorstore a partir dos chunks e do modelo de embeddings\n    vectorstore.save_local(vectorstoreDir) # salva o vetorstore localmente\n    print(f\"Vectorstore criado e salvo em {vectorstoreDir}\")\nvectorstoreDir = f\"../{VECTOR_STORE_DIR}\"\ncriar_vectorstore(chunks, vectorstoreDir)\nvector_dir = f\"../{VECTOR_STORE_DIR}\"\n# Carregar os vectorstores\ndef carregar_vectorstore(vectorstoreDir):",
+        "detail": "src.services.criarVectorStore",
+        "documentation": {}
+    },
+    {
+        "label": "carregar_vectorstore",
+        "kind": 2,
+        "importPath": "src.services.criarVectorStore",
+        "description": "src.services.criarVectorStore",
+        "peekOfCode": "def carregar_vectorstore(vectorstoreDir):\n    embeddings = OllamaEmbeddings(model=config[\"EMBEDDING_MODEL\"]) #instanciando o modelo de embeddings (vetores)\n    vectorstore = FAISS.load_local(\n        folder_path=vectorstoreDir, \n        embeddings=embeddings,\n        allow_dangerous_deserialization = True\n        ) #carrega o vetorstore localmente\n    return vectorstore\n# Perguntar ao RAG\ndef perguntar_ao_rag(pergunta):",
+        "detail": "src.services.criarVectorStore",
+        "documentation": {}
+    },
+    {
+        "label": "perguntar_ao_rag",
+        "kind": 2,
+        "importPath": "src.services.criarVectorStore",
+        "description": "src.services.criarVectorStore",
+        "peekOfCode": "def perguntar_ao_rag(pergunta):\n    vectorstore = carregar_vectorstore(vector_dir)\n    retriever = vectorstore.as_retriever() #recuperador de documento\n    llm = ChatOllama(model=config[\"MODEL\"], temperature=0) #instanciando o modelo de linguagem (para testes)\n    qa = RetrievalQA.from_chain_type(llm=llm, chain_type=\"stuff\", retriever=retriever) #orquestra o processo do RAG (Modelo + recuperador)\n    return qa.run(pergunta) #retorna a resposta do RAG",
+        "detail": "src.services.criarVectorStore",
+        "documentation": {}
+    },
+    {
+        "label": "llm",
+        "kind": 5,
+        "importPath": "src.services.criarVectorStore",
+        "description": "src.services.criarVectorStore",
+        "peekOfCode": "llm = ChatOllama(model=config[\"MODEL\"], temperature=0)\nembeddings = OllamaEmbeddings(model=config[\"EMBEDDING_MODEL\"])\nDATA_DIR = config[\"DATA_DIR\"]\nVECTOR_STORE_DIR = config[\"VECTOR_STORE_DIR\"]\n# Cortar os PDFs que vem por padrão\ndef carregar_cortar_pdfs(data_dir):\n    all_docs = []\n    for filename in os.listdir(data_dir):\n        if filename.endswith(\".pdf\"):\n            loader = UnstructuredPDFLoader(",
+        "detail": "src.services.criarVectorStore",
+        "documentation": {}
+    },
+    {
+        "label": "embeddings",
+        "kind": 5,
+        "importPath": "src.services.criarVectorStore",
+        "description": "src.services.criarVectorStore",
+        "peekOfCode": "embeddings = OllamaEmbeddings(model=config[\"EMBEDDING_MODEL\"])\nDATA_DIR = config[\"DATA_DIR\"]\nVECTOR_STORE_DIR = config[\"VECTOR_STORE_DIR\"]\n# Cortar os PDFs que vem por padrão\ndef carregar_cortar_pdfs(data_dir):\n    all_docs = []\n    for filename in os.listdir(data_dir):\n        if filename.endswith(\".pdf\"):\n            loader = UnstructuredPDFLoader(\n                os.path.join(data_dir, filename),",
+        "detail": "src.services.criarVectorStore",
+        "documentation": {}
+    },
+    {
+        "label": "DATA_DIR",
+        "kind": 5,
+        "importPath": "src.services.criarVectorStore",
+        "description": "src.services.criarVectorStore",
+        "peekOfCode": "DATA_DIR = config[\"DATA_DIR\"]\nVECTOR_STORE_DIR = config[\"VECTOR_STORE_DIR\"]\n# Cortar os PDFs que vem por padrão\ndef carregar_cortar_pdfs(data_dir):\n    all_docs = []\n    for filename in os.listdir(data_dir):\n        if filename.endswith(\".pdf\"):\n            loader = UnstructuredPDFLoader(\n                os.path.join(data_dir, filename),\n                strategy=\"hi_res\",",
+        "detail": "src.services.criarVectorStore",
+        "documentation": {}
+    },
+    {
+        "label": "VECTOR_STORE_DIR",
+        "kind": 5,
+        "importPath": "src.services.criarVectorStore",
+        "description": "src.services.criarVectorStore",
+        "peekOfCode": "VECTOR_STORE_DIR = config[\"VECTOR_STORE_DIR\"]\n# Cortar os PDFs que vem por padrão\ndef carregar_cortar_pdfs(data_dir):\n    all_docs = []\n    for filename in os.listdir(data_dir):\n        if filename.endswith(\".pdf\"):\n            loader = UnstructuredPDFLoader(\n                os.path.join(data_dir, filename),\n                strategy=\"hi_res\",\n                extract_images_in_pdf=True,",
+        "detail": "src.services.criarVectorStore",
+        "documentation": {}
+    },
+    {
+        "label": "chunks",
+        "kind": 5,
+        "importPath": "src.services.criarVectorStore",
+        "description": "src.services.criarVectorStore",
+        "peekOfCode": "chunks = carregar_cortar_pdfs(f\"../{DATA_DIR}\")\nprint(f\"carregado e cortado em {len(chunks)} chunks.\")\n# Criação dos vectorstores\ndef criar_vectorstore(chunks, vectorstoreDir):\n    embeddings = OllamaEmbeddings(model=config[\"EMBEDDING_MODEL\"]) #instanciando o modelo de embeddings (vetores)\n    vectorstore = FAISS.from_documents(chunks, embeddings) # cria o vetorstore a partir dos chunks e do modelo de embeddings\n    vectorstore.save_local(vectorstoreDir) # salva o vetorstore localmente\n    print(f\"Vectorstore criado e salvo em {vectorstoreDir}\")\nvectorstoreDir = f\"../{VECTOR_STORE_DIR}\"\ncriar_vectorstore(chunks, vectorstoreDir)",
+        "detail": "src.services.criarVectorStore",
+        "documentation": {}
+    },
+    {
+        "label": "vectorstoreDir",
+        "kind": 5,
+        "importPath": "src.services.criarVectorStore",
+        "description": "src.services.criarVectorStore",
+        "peekOfCode": "vectorstoreDir = f\"../{VECTOR_STORE_DIR}\"\ncriar_vectorstore(chunks, vectorstoreDir)\nvector_dir = f\"../{VECTOR_STORE_DIR}\"\n# Carregar os vectorstores\ndef carregar_vectorstore(vectorstoreDir):\n    embeddings = OllamaEmbeddings(model=config[\"EMBEDDING_MODEL\"]) #instanciando o modelo de embeddings (vetores)\n    vectorstore = FAISS.load_local(\n        folder_path=vectorstoreDir, \n        embeddings=embeddings,\n        allow_dangerous_deserialization = True",
+        "detail": "src.services.criarVectorStore",
+        "documentation": {}
+    },
+    {
+        "label": "vector_dir",
+        "kind": 5,
+        "importPath": "src.services.criarVectorStore",
+        "description": "src.services.criarVectorStore",
+        "peekOfCode": "vector_dir = f\"../{VECTOR_STORE_DIR}\"\n# Carregar os vectorstores\ndef carregar_vectorstore(vectorstoreDir):\n    embeddings = OllamaEmbeddings(model=config[\"EMBEDDING_MODEL\"]) #instanciando o modelo de embeddings (vetores)\n    vectorstore = FAISS.load_local(\n        folder_path=vectorstoreDir, \n        embeddings=embeddings,\n        allow_dangerous_deserialization = True\n        ) #carrega o vetorstore localmente\n    return vectorstore",
+        "detail": "src.services.criarVectorStore",
+        "documentation": {}
+    },
+    {
+        "label": "EmbeddingService",
+        "kind": 6,
+        "importPath": "src.services.embeddings.service",
+        "description": "src.services.embeddings.service",
+        "peekOfCode": "class EmbeddingService:\n    def __init__(self, model):\n        self.embeddings = OllamaEmbeddings(\n            model=model\n        )\n    def get_embeddings(self):\n        return self.embeddings",
+        "detail": "src.services.embeddings.service",
+        "documentation": {}
+    },
+    {
+        "label": "LLMService",
+        "kind": 6,
+        "importPath": "src.services.llm.service",
+        "description": "src.services.llm.service",
+        "peekOfCode": "class LLMService:\n    def __init__(self, model):\n        self.llm = ChatOllama(\n            model=model,\n            temperature=0\n        )\n    def get_llm(self):\n        return self.llm",
+        "detail": "src.services.llm.service",
         "documentation": {}
     },
     {
         "label": "model",
         "kind": 5,
-        "importPath": "models.ollamaModel",
-        "description": "models.ollamaModel",
+        "importPath": "src.services.ollama.service",
+        "description": "src.services.ollama.service",
         "peekOfCode": "model = config[\"MODEL\"].strip()\nembedding_model = config[\"EMBEDDING_MODEL\"].strip()\nprint(f\"Baixando o modelo {model}\")\ntry:\n    for progress in ollama.pull(model, stream=True):\n        status = progress.get(\"status\", \"\")\n        if \"completed\" in progress and \"total\" in progress:\n            total = progress[\"total\"]\n            completed = progress[\"completed\"]\n            percent = completed / total * 100",
-        "detail": "models.ollamaModel",
+        "detail": "src.services.ollama.service",
         "documentation": {}
     },
     {
         "label": "embedding_model",
         "kind": 5,
-        "importPath": "models.ollamaModel",
-        "description": "models.ollamaModel",
+        "importPath": "src.services.ollama.service",
+        "description": "src.services.ollama.service",
         "peekOfCode": "embedding_model = config[\"EMBEDDING_MODEL\"].strip()\nprint(f\"Baixando o modelo {model}\")\ntry:\n    for progress in ollama.pull(model, stream=True):\n        status = progress.get(\"status\", \"\")\n        if \"completed\" in progress and \"total\" in progress:\n            total = progress[\"total\"]\n            completed = progress[\"completed\"]\n            percent = completed / total * 100\n            bar = \"█\" * int(percent / 2)",
-        "detail": "models.ollamaModel",
+        "detail": "src.services.ollama.service",
         "documentation": {}
     },
     {
         "label": "response",
         "kind": 5,
-        "importPath": "models.ollamaModel",
-        "description": "models.ollamaModel",
+        "importPath": "src.services.ollama.service",
+        "description": "src.services.ollama.service",
         "peekOfCode": "response = ollama.generate(model=config[\"MODEL\"], prompt='você está vivo?')\nprint(response['response'])",
-        "detail": "models.ollamaModel",
+        "detail": "src.services.ollama.service",
+        "documentation": {}
+    },
+    {
+        "label": "PDFService",
+        "kind": 6,
+        "importPath": "src.services.pdf.service",
+        "description": "src.services.pdf.service",
+        "peekOfCode": "class PDFService:\n    def carregar_documentos(self, data_dir):\n        documentos = []\n        for arquivo in os.listdir(data_dir):\n            if arquivo.endswith(\".pdf\"):\n                loader = UnstructuredPDFLoader(\n                    os.path.join(data_dir, arquivo),\n                    strategy=\"hi_res\",\n                    extract_images_in_pdf=True,\n                    languages=[\"por\"]",
+        "detail": "src.services.pdf.service",
+        "documentation": {}
+    },
+    {
+        "label": "RAGService",
+        "kind": 6,
+        "importPath": "src.services.rag.service",
+        "description": "src.services.rag.service",
+        "peekOfCode": "class RAGService:\n    def __init__(self, llm_service, vectorstore_service):\n        self.llm = llm_service.get_llm()\n        self.retriever = vectorstore_service.get_retriever()\n        self.chain = RetrievalQA.from_chain_type(\n            llm=self.llm,\n            retriever=self.retriever,\n            chain_type=\"stuff\"\n        )\n    def perguntar(self, pergunta: str):",
+        "detail": "src.services.rag.service",
+        "documentation": {}
+    },
+    {
+        "label": "#pd.options.display_float_format",
+        "kind": 5,
+        "importPath": "src.services.similaridade.service",
+        "description": "src.services.similaridade.service",
+        "peekOfCode": "#pd.options.display_float_format = '{:.2f}'.format",
+        "detail": "src.services.similaridade.service",
+        "documentation": {}
+    },
+    {
+        "label": "VectorStoreService",
+        "kind": 6,
+        "importPath": "src.services.vectorstore.service",
+        "description": "src.services.vectorstore.service",
+        "peekOfCode": "class VectorStoreService:\n    def __init__(self, embeddings):\n        self.embeddings = embeddings\n        self.vectorstore = None\n    def criar_vectorstore(self, chunks):\n        return FAISS.from_documents(chunks, self.embeddings)\n    def salvar_vectorstore(self, pasta):\n        self.vectorstore.save_local(pasta)\n    def carregar_vectorstore(self, pasta):\n        self.vectorstore = FAISS.load_local(",
+        "detail": "src.services.vectorstore.service",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_URL",
+        "kind": 5,
+        "importPath": "src.database",
+        "description": "src.database",
+        "peekOfCode": "DATABASE_URL = f\"postgresql://{config['DB_USER']}:{config['DB_PASSWORD']}@postgres:{config['DB_PORT']}/{config['DB_NAME']}\"\nengine = create_engine(DATABASE_URL)\nSessionLocal = sessionmaker(bind=engine)",
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "kind": 5,
+        "importPath": "src.database",
+        "description": "src.database",
+        "peekOfCode": "engine = create_engine(DATABASE_URL)\nSessionLocal = sessionmaker(bind=engine)",
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "kind": 5,
+        "importPath": "src.database",
+        "description": "src.database",
+        "peekOfCode": "SessionLocal = sessionmaker(bind=engine)",
+        "detail": "src.database",
         "documentation": {}
     }
 ]

@@ -21,6 +21,3 @@ python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
 ```
-
-## Adicionar novas bases de conhecimento
-Adicione os pdfs a pasta `data`

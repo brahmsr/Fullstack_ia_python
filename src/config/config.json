@@ -1,0 +1,15 @@
+{
+    "DATA_DIR": "data",
+    "VECTOR_STORE_DIR": "vectorstore",
+    "EMBEDDING_MODEL": "Qwen3-Embedding",
+    "MODEL": "Qwen3:1.7B",
+
+    "DB_NAME": "ia_py_prescritiva",
+    "DB_USER": "admin_fiesc",
+    "DB_PASSWORD": "senha*str0ng",
+    "DB_PORT": 5432,
+    
+    "PGADMIN_DEFAULT_EMAIL": "brahms@email.com",
+    "PGADMIN_DEFAULT_PASSWORD": "senha+strong",
+    "PGADMIN_PORT": 5050
+}

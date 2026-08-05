@@ -1,7 +1,0 @@
-{
-    "OPEN_API_KEY": "AQ.Ab8RN6J-S7V8-lVMsIViZiTh-JD1NMSAbEBaS-NxbFNuCto_Pw",
-    "DATA_DIR": "data",
-    "VECTOR_STORE_DIR": "vectorstore",
-    "EMBEDDING_MODEL": "Qwen3-Embedding",
-    "MODEL": "Qwen3:1.7B"
-}
