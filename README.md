@@ -1,12 +1,17 @@
 # fullstack IA com Python
 
-- [ ] setup de ambiente virtual
-- [ ] instalação de dependências
-- [ ] iniciar notebook
-- [ ] carregar dados do pdf
-- [ ] testar com ollama
-- [ ] configurar flask
-- [ ] criar api
+- [x] setup de ambiente virtual
+- [x] instalação de dependências
+- [x] iniciar notebook
+- [x] carregar dados do pdf
+- [x] testar com ollama
+- [x] carregar dados do csv
+- [x] gerar embeddings e vectorstore
+- [x] implementar RAG
+- [x] implementar modelo preditivo
+- [x] treinar modelo preditivo
+- [x] testar modelo preditivo
+- [ ] configurar minimalAPI
 - [ ] criar interface
 - [ ] integrar tudo
 
@@ -24,4 +29,6 @@ pip install -r requirements.txt
 
 ### Fontes
 
-Caso queira aprender mais sobre, utilizei 2 vídeos como base: [RAG com python](https://www.youtube.com/watch?v=G3EUlIFy1fk) e  [Machine Learning com Python](https://www.youtube.com/watch?v=L4atvlp_FUE&list=PLI-bpOj6_aWGz89aONnhAUT3GpMP2VvW7&index=11)
+Caso queira aprender mais sobre, utilizei esses vídeos como base: [RAG com python](https://www.youtube.com/watch?v=G3EUlIFy1fk) e  [Machine Learning com Python](https://www.youtube.com/watch?v=L4atvlp_FUE&list=PLI-bpOj6_aWGz89aONnhAUT3GpMP2VvW7&index=11), [Identificando falhas e manutenções preventivas](https://www.youtube.com/watch?v=JwZ5ffZk-fM).
+
+_O conhecimento liberta_

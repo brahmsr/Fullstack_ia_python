@@ -2,10 +2,11 @@ import csv
 import os
 import sys
 from datetime import datetime
+import pandas as pd
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from database import engine, SessionLocal
+from database.database import engine, SessionLocal
 from models.sensor_data import Base, SensorData
 
 def parse_float(val):
@@ -92,6 +93,21 @@ def importar_sensor_data(csv_path):
         print(f"Erro: {e}")
     finally:
         session.close()
+
+def carregar_dados_bd():
+    """
+    Cria a conexão, carrega todos os dados do BD e retorna uma conexão com o Pandas.
+    """
+    print("Carregando dados do Banco de Dados...")
+    session = SessionLocal()
+    try:
+        # pandas nativo para ler direto do banco, bypassando o ORM
+        df = pd.read_sql(session.query(SensorData).statement, session.bind)
+    finally:
+        session.close()
+        
+    print("Dados carregados com sucesso!")
+    return df
 
 if __name__ == "__main__":
     csv_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'banner.csv'))
