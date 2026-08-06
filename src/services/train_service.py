@@ -1,4 +1,3 @@
-from sklearn.model_selection import RandomizedSearchCV
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import (
@@ -67,38 +66,22 @@ class TrainService:
     
     @staticmethod
     def train_model(X_train, y_train):
-        
-        parametros = {
-            "n_estimators": [100, 200, 300],
-            "learning_rate": [0.01, 0.05, 0.1],
-            "max_depth": [4, 6, 8, 10],
-            "subsample": [0.8, 1.0],
-            "colsample_bytree": [0.8, 1.0],
-        } # treina X(100,200,300) modelos na memória, com X(4,6,8,10) de profundidade e X(0.8,1.0) de subsample e colsample_bytree
-        
+        #rodei o RandomizedSearchCV e encontrei os melhores parâmetros, então movi para o notebook (foram 4hrs) (ver notebooks/CriacaoModeloPreditivo.ipynb)
+        #o que não fez uma diferença muito grande, já que eu tinha conseguido chegar a 87 antes (ganho de pouca % no F1)
         modelo = XGBClassifier(
+            subsample=0.8,
+            n_estimators=300,
+            max_depth=8,
+            learning_rate=0.1,
+            colsample_bytree=0.8,
             random_state=42,
             eval_metric="mlogloss",
             tree_method="hist"
         )
-        
-        busca = RandomizedSearchCV(
-            estimator=modelo,
-            param_distributions=parametros,
-            n_iter=20,
-            cv=5,
-            scoring="f1_weighted",
-            verbose=1,
-            random_state=42,
-            n_jobs=-1
-        )
-        
-        busca.fit(X_train, y_train)
 
-        print("\nMelhores parâmetros:")
-        print(busca.best_params_)
+        modelo.fit(X_train, y_train)
 
-        return busca.best_estimator_
+        return modelo
         
         
     @staticmethod
@@ -117,7 +100,7 @@ class TrainService:
             sorted(
                 zip(
                     features,
-                    model.feature_importances_
+                    (float(imp) for imp in model.feature_importances_)
                 ),
                 key=lambda x: x[1],
                 reverse=True
@@ -309,6 +292,7 @@ class TrainService:
             "r",
             encoding="utf-8"
         ) as f:
-            return json.load(f)   
+            return json.load(f)  
+
 if __name__ == "__main__":
     TrainService.train()
