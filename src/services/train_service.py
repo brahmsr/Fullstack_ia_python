@@ -5,10 +5,9 @@ from sklearn.metrics import (
     accuracy_score,
     precision_score,
     recall_score,
-    f1_score,
-    classification_report
+    f1_score
 )
-
+from xgboost import XGBClassifier
 import sys
 import os
 import joblib
@@ -20,12 +19,12 @@ path = os.path.abspath(os.path.join(os.getcwd(), "..", "src"))
 if path not in sys.path:
     sys.path.append(path)
 
-from services.sensor_service import carregar_dados_bd
+from sensor_service import carregar_dados_bd
 
 class TrainService:
     
     MODEL_DIR = os.path.abspath(
-        os.path.join(os.getcwd(), "..", "vectorstore")
+        os.path.join(os.getcwd(), "vectorstore")
     )
     MODEL_PATH = os.path.join(MODEL_DIR, "fault_model.pkl")
     METRICS_PATH = os.path.join(MODEL_DIR, "training_metrics.json")
@@ -35,8 +34,8 @@ class TrainService:
         
         os.makedirs(TrainService.MODEL_DIR, exist_ok=True)
 
-        # Decidi usar o Extra Trees, pois após alguns (muitos) testes foi o melhor modelo que encontrei com uma acurácia e F1 de 85%
-        # Como pode ser visto no notebook CriacaoModeloPreditivo
+        # Decidi usar o XGBClassifier, pois após alguns (muitos) testes foi o melhor modelo que encontrei com uma acurácia e F1 de 87% nas configs atuais.
+        # (O modelo ainda pode ser melhorado)
 
         df = carregar_dados_bd()
         print(f"Shape do DataFrame: {df.shape}")
@@ -90,10 +89,19 @@ class TrainService:
         resultados = []
 
         #Treinando modelo        
-        modelo = ExtraTreesClassifier(
-            n_estimators=100,
+        # modelo = ExtraTreesClassifier(
+        #     n_estimators=100,
+        #     max_depth=40,
+        #     min_samples_split=10,
+        #     min_samples_leaf=5,
+        #     random_state=42,
+        #     n_jobs=4
+        # )
+        
+        modelo = XGBClassifier(n_estimators=50, max_depth=20,
             random_state=42,
-            n_jobs=2
+            eval_metric="mlogloss",
+            tree_method="hist"
         )
         
         #adicionando modelo no array de resultado        
@@ -103,7 +111,7 @@ class TrainService:
         pred = modelo.predict(X_test)
         
         resultado = {
-            "Modelo": "Extra Trees",
+            "Modelo": "XGBoost",
             "Accuracy": float(accuracy_score(y_test, pred)),
             "Precision": float(
                 precision_score(
@@ -168,4 +176,5 @@ class TrainService:
             "metrics": resultado,
         }
         
-TrainService.train()
+if __name__ == "__main__":
+    TrainService.train()
