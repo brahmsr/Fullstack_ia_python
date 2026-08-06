@@ -1,22 +1,51 @@
 import joblib
-SYSTEM_STATES = [
-    "normal",
-    "baseline",
-    "teste",
-    "acelerando",
-    "motor_desligado"
-]
+import pandas as pd
+
+from services.train_service import TrainService
+
 
 class PredictionService:
 
-    def predict(sensor_json):
+    def __init__(self):
+        
+        
 
-        model = joblib.load("ml/model.pkl")
+        data = TrainService.load_model()
 
-        encoder = joblib.load("ml/label_encoder.pkl")
+        self.model = data["model"]
+        self.encoder = data["encoder"]
+        self.features = data["features"]
 
-        X = montar_dataframe(sensor_json)
+    def predict(self, sensor_data):
+        faltando = set(self.features) - set(sensor_data.keys())
 
-        pred = model.predict(X)
+        if faltando:
+            raise ValueError(
+                f"Features ausentes: {sorted(faltando)}"
+            )
 
-        return encoder.inverse_transform(pred)[0]
+        df = pd.DataFrame([sensor_data])
+
+        df = df[self.features]
+
+        pred = self.model.predict(df)[0]
+
+        probs = self.model.predict_proba(df)[0]
+
+        return {
+
+            "fault": self.encoder.inverse_transform([pred])[0],
+
+            "confidence": float(max(probs)),
+
+            "probabilities": {
+
+                classe: float(prob)
+
+                for classe, prob in zip(
+                    self.encoder.classes_,
+                    probs
+                )
+            }
+
+        }

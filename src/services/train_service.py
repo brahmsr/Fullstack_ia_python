@@ -1,12 +1,15 @@
+from sklearn.model_selection import RandomizedSearchCV
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
-from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.metrics import (
     accuracy_score,
     precision_score,
     recall_score,
-    f1_score
+    f1_score,
+    classification_report,
+    confusion_matrix
 )
+from datetime import datetime
 from xgboost import XGBClassifier
 import sys
 import os
@@ -14,7 +17,6 @@ import joblib
 import json
 import pandas as pd
 
-# adicionando o diretório 'src' ao sys.path
 path = os.path.abspath(os.path.join(os.getcwd(), "..", "src"))
 if path not in sys.path:
     sys.path.append(path)
@@ -22,159 +24,291 @@ if path not in sys.path:
 from sensor_service import carregar_dados_bd
 
 class TrainService:
+    # Decidi usar o XGBClassifier, pois após alguns (muitos) testes foi o melhor modelo que encontrei com uma acurácia e F1 de 87% nas configs atuais.
+    # (O modelo ainda pode ser melhorado)
     
     MODEL_DIR = os.path.abspath(
         os.path.join(os.getcwd(), "vectorstore")
     )
     MODEL_PATH = os.path.join(MODEL_DIR, "fault_model.pkl")
     METRICS_PATH = os.path.join(MODEL_DIR, "training_metrics.json")
-
+    MIN_SAMPLES = 30
+    
     @staticmethod
-    def train():
-        
-        os.makedirs(TrainService.MODEL_DIR, exist_ok=True)
-
-        # Decidi usar o XGBClassifier, pois após alguns (muitos) testes foi o melhor modelo que encontrei com uma acurácia e F1 de 87% nas configs atuais.
-        # (O modelo ainda pode ser melhorado)
-
+    def load_data():
+        """Carrega os dados do banco de dados"""
         df = carregar_dados_bd()
         print(f"Shape do DataFrame: {df.shape}")
         print(f"Contagem de nulos: \n{df.isnull().sum()}")
-        
-        print("Contagem de classes:")
-        print(df["fault"].value_counts(normalize=True))
-        
-        print("Removendo colunas desnecessárias:")
-        df = df.drop(columns=[
-            "id",
-            "created_at"
-        ],
-        errors="ignore"
+
+        df = df.drop(
+            columns=["id", "created_at"],
+            errors="ignore"
         )
-        print(f"Shape do DataFrame: {df.shape}")
-        print(f"Colunas: {df.columns.tolist()}")
-        
-        print("separando features e label:")
-        X = df.drop("fault", axis=1)
-        y = df["fault"]
-        print(f"features: {X.shape}")
-        print(f"label: {y.shape}")
 
-        min_amostras = 30
         contagem = df["fault"].value_counts()
-        classes_boas = contagem[contagem >= min_amostras].index
-        df = df[df["fault"].isin(classes_boas)]
-        print("Classes depois do filtro:", df["fault"].nunique())
-        print(f"Shape do DataFrame: {df.shape}")
-        
-        X = df.drop("fault", axis=1)
-        y = df["fault"]
-        print(f"Shape de X: {X.shape}")
-        print(f"Shape de y: {y.shape}")
 
-        # Codificação das classes
+        classes_validas = contagem[
+            contagem >= TrainService.MIN_SAMPLES
+        ].index
+
+        df = df[df["fault"].isin(classes_validas)]
+
+        X = df.drop(columns="fault")
+        X = X.apply(pd.to_numeric)
+
+        y = df["fault"]
+
         encoder = LabelEncoder()
+
         y = encoder.fit_transform(y)
 
-        # Divisão treino/teste  
-        X_train, X_test, y_train, y_test = train_test_split(
-            X,
-            y,
-            test_size=0.2,
-            random_state=42,
-            stratify=y
-        )
+        return X, y, encoder
+    
+    @staticmethod
+    def train_model(X_train, y_train):
         
-        # array de resultado        
-        resultados = []
-
-        #Treinando modelo        
-        # modelo = ExtraTreesClassifier(
-        #     n_estimators=100,
-        #     max_depth=40,
-        #     min_samples_split=10,
-        #     min_samples_leaf=5,
-        #     random_state=42,
-        #     n_jobs=4
-        # )
+        parametros = {
+            "n_estimators": [100, 200, 300],
+            "learning_rate": [0.01, 0.05, 0.1],
+            "max_depth": [4, 6, 8, 10],
+            "subsample": [0.8, 1.0],
+            "colsample_bytree": [0.8, 1.0],
+        } # treina X(100,200,300) modelos na memória, com X(4,6,8,10) de profundidade e X(0.8,1.0) de subsample e colsample_bytree
         
-        modelo = XGBClassifier(n_estimators=50, max_depth=20,
+        modelo = XGBClassifier(
             random_state=42,
             eval_metric="mlogloss",
             tree_method="hist"
         )
         
-        #adicionando modelo no array de resultado        
-
-        modelo.fit(X_train, y_train)
-
-        pred = modelo.predict(X_test)
+        busca = RandomizedSearchCV(
+            estimator=modelo,
+            param_distributions=parametros,
+            n_iter=20,
+            cv=5,
+            scoring="f1_weighted",
+            verbose=1,
+            random_state=42,
+            n_jobs=-1
+        )
         
+        busca.fit(X_train, y_train)
+
+        print("\nMelhores parâmetros:")
+        print(busca.best_params_)
+
+        return busca.best_estimator_
+        
+        
+    @staticmethod
+    def evaluate(
+        model,
+        X_test,
+        y_test,
+        encoder,
+        features
+    ):
+        """Avalia o modelo e gera métricas"""
+        
+        pred = model.predict(X_test)
+
+        feature_importance = dict(
+            sorted(
+                zip(
+                    features,
+                    model.feature_importances_
+                ),
+                key=lambda x: x[1],
+                reverse=True
+            )
+        )
+
+        report = classification_report(
+            y_test,
+            pred,
+            target_names=encoder.classes_,
+            output_dict=True,
+            zero_division=0
+        )
+
         resultado = {
-            "Modelo": "XGBoost",
-            "Accuracy": float(accuracy_score(y_test, pred)),
-            "Precision": float(
+
+            "algorithm": "XGBClassifier",
+
+            "trained_at": datetime.now().isoformat(),
+
+            "accuracy": float(
+                accuracy_score(
+                    y_test,
+                    pred
+                )
+            ),
+
+            "precision": float(
                 precision_score(
                     y_test,
                     pred,
                     average="weighted",
-                    zero_division=0,
+                    zero_division=0
                 )
             ),
-            "Recall": float(
+
+            "recall": float(
                 recall_score(
                     y_test,
                     pred,
                     average="weighted",
-                    zero_division=0,
+                    zero_division=0
                 )
             ),
-            "F1": float(
+
+            "f1": float(
                 f1_score(
                     y_test,
                     pred,
                     average="weighted",
-                    zero_division=0,
+                    zero_division=0
                 )
             ),
-            "Classes": encoder.classes_.tolist(),
-            "Total_amostras": len(df),
-            "Features": X.columns.tolist(),
+
+            "confusion_matrix": confusion_matrix(
+                y_test,
+                pred
+            ).tolist(),
+
+            "classification_report": report,
+
+            "feature_importance": feature_importance,
+
+            "model_parameters": model.get_params(),
+
+            "classes": encoder.classes_.tolist(),
+
+            "features": features
+
         }
-        print(resultado)
+
+        return resultado
         
-        #Salvando modelo treinado
+    @staticmethod
+    def save(
+        model,
+        encoder,
+        features,
+        metrics
+    ):
+        """Salva o modelo e métricas"""
+        os.makedirs(
+            TrainService.MODEL_DIR,
+            exist_ok=True
+        )
+
         joblib.dump(
             {
-                "model": modelo,
+                "model": model,
                 "encoder": encoder,
-                "features": X.columns.tolist(),
+                "features": features
             },
-            TrainService.MODEL_PATH,
+            TrainService.MODEL_PATH
         )
-        
-        print(f"\nModelo salvo em:\n{TrainService.MODEL_PATH}")
-        
-        # Salva métricas
+
         with open(
             TrainService.METRICS_PATH,
             "w",
-            encoding="utf-8",
+            encoding="utf-8"
         ) as f:
+
             json.dump(
-                resultado,
+                metrics,
                 f,
                 indent=4,
-                ensure_ascii=False,
+                ensure_ascii=False
             )
 
-        print(f"Métricas salvas em:\n{TrainService.METRICS_PATH}")
+        print("\nModelo salvo em:")
+        print(TrainService.MODEL_PATH)
+
+        print("\nMétricas salvas em:")
+        print(TrainService.METRICS_PATH)
+        
+    @staticmethod
+    def train():
+
+        X, y, encoder = TrainService.load_data()
+
+        X_train, X_test, y_train, y_test = train_test_split(
+            X,
+            y,
+            test_size=0.2,
+            stratify=y,
+            random_state=42
+        )
+
+        modelo = TrainService.train_model(
+            X_train,
+            y_train
+        )
+
+        metricas = TrainService.evaluate(
+            modelo,
+            X_test,
+            y_test,
+            encoder,
+            X.columns.tolist()
+        )
+
+        TrainService.save(
+            modelo,
+            encoder,
+            X.columns.tolist(),
+            metricas
+        )
+
+        print("\nResumo do treinamento\n")
+
+        print(
+            json.dumps(
+                metricas,
+                indent=4,
+                ensure_ascii=False
+            )
+        )
 
         return {
             "model": modelo,
             "encoder": encoder,
-            "metrics": resultado,
+            "metrics": metricas
         }
+    @staticmethod
+    def is_trained():
+        """verifica se o modelo já foi treinado."""
+        return (
+            os.path.exists(TrainService.MODEL_PATH)
+            and os.path.exists(TrainService.METRICS_PATH)
+        )
         
+    @staticmethod
+    def load_model():
+        """carrega o modelo treinado."""
+        if not TrainService.is_trained():
+            raise FileNotFoundError(
+                "modelo ainda não foi treinado."
+            )
+
+        return joblib.load(TrainService.MODEL_PATH)
+     
+    @staticmethod
+    def get_metrics():
+
+        if not os.path.exists(TrainService.METRICS_PATH):
+            return None
+
+        with open(
+            TrainService.METRICS_PATH,
+            "r",
+            encoding="utf-8"
+        ) as f:
+            return json.load(f)   
 if __name__ == "__main__":
     TrainService.train()

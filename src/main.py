@@ -1,3 +1,6 @@
+from sensor_service import carregar_dados_bd
+from src.services.prediction_service import PredictionService
+from src.services.train_service import TrainService
 import json
 
 from services.pdf_service import PDFService
@@ -41,8 +44,28 @@ rag = RAGService(
     vector_service
 )
 
+# Modelo de predição
+print("Validando se o modelo já foi treinado...")
+if TrainService.is_trained():
+    print("Modelo já treinado...")
+    metrics = TrainService.get_metrics()
+    print(f"({metrics['algorithm']}) ")
+    
+else:
+    print("Modelo não encontrado. Iniciando treinamento...")
+    TrainService.train()
+
+# Pergunta de teste RAG
 print(
     rag.perguntar(
         "Como corrigir o problema de cocked_rotor?"
     )
 )
+
+# Teste de predição
+df = carregar_dados_bd()
+prediction = PredictionService()
+ultima_leitura = df.iloc[-1].drop("fault").to_dict()
+resultado = prediction.predict(ultima_leitura)
+
+print(resultado)

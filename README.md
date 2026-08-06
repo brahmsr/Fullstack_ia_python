@@ -11,8 +11,7 @@
 - [x] implementar modelo preditivo
 - [x] treinar modelo preditivo
 - [x] testar modelo preditivo
-- [ ] configurar minimalAPI
-- [ ] criar interface
+- [ ] configurar StreamLit (melhor para interface e plotagem de gráficos)
 - [ ] integrar tudo
 
 ## Programas necessários
