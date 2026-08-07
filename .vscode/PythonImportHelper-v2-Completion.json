@@ -295,11 +295,11 @@
         "documentation": {}
     },
     {
-        "label": "FastAPI",
-        "importPath": "fastapi",
-        "description": "fastapi",
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
         "isExtraImport": true,
-        "detail": "fastapi",
+        "detail": "sqlalchemy",
         "documentation": {}
     },
     {
@@ -367,30 +367,6 @@
         "documentation": {}
     },
     {
-        "label": "create_engine",
-        "importPath": "sqlalchemy",
-        "description": "sqlalchemy",
-        "isExtraImport": true,
-        "detail": "sqlalchemy",
-        "documentation": {}
-    },
-    {
-        "label": "declarative_base",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
-        "documentation": {}
-    },
-    {
-        "label": "declarative_base",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
-        "documentation": {}
-    },
-    {
         "label": "sessionmaker",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
@@ -399,19 +375,19 @@
         "documentation": {}
     },
     {
-        "label": "RecursiveCharacterTextSplitter",
-        "importPath": "langchain_text_splitters",
-        "description": "langchain_text_splitters",
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
         "isExtraImport": true,
-        "detail": "langchain_text_splitters",
+        "detail": "sqlalchemy.orm",
         "documentation": {}
     },
     {
-        "label": "RecursiveCharacterTextSplitter",
-        "importPath": "langchain_text_splitters",
-        "description": "langchain_text_splitters",
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
         "isExtraImport": true,
-        "detail": "langchain_text_splitters",
+        "detail": "sqlalchemy.orm",
         "documentation": {}
     },
     {
@@ -421,6 +397,30 @@
         "importPath": "json",
         "description": "json",
         "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "RecursiveCharacterTextSplitter",
+        "importPath": "langchain_text_splitters",
+        "description": "langchain_text_splitters",
+        "isExtraImport": true,
+        "detail": "langchain_text_splitters",
+        "documentation": {}
+    },
+    {
+        "label": "RecursiveCharacterTextSplitter",
+        "importPath": "langchain_text_splitters",
+        "description": "langchain_text_splitters",
+        "isExtraImport": true,
+        "detail": "langchain_text_splitters",
         "documentation": {}
     },
     {
@@ -522,6 +522,56 @@
         "documentation": {}
     },
     {
+        "label": "joblib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "joblib",
+        "description": "joblib",
+        "detail": "joblib",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "TrainService",
+        "importPath": "services.train_service",
+        "description": "services.train_service",
+        "isExtraImport": true,
+        "detail": "services.train_service",
+        "documentation": {}
+    },
+    {
+        "label": "TrainService",
+        "importPath": "services.train_service",
+        "description": "services.train_service",
+        "isExtraImport": true,
+        "detail": "services.train_service",
+        "documentation": {}
+    },
+    {
+        "label": "is_state",
+        "importPath": "services.fault_labels",
+        "description": "services.fault_labels",
+        "isExtraImport": true,
+        "detail": "services.fault_labels",
+        "documentation": {}
+    },
+    {
+        "label": "is_state",
+        "importPath": "services.fault_labels",
+        "description": "services.fault_labels",
+        "isExtraImport": true,
+        "detail": "services.fault_labels",
+        "documentation": {}
+    },
+    {
         "label": "csv",
         "kind": 6,
         "isExtraImport": true,
@@ -539,19 +589,35 @@
         "documentation": {}
     },
     {
-        "label": "engine",
-        "importPath": "database",
-        "description": "database",
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
         "isExtraImport": true,
-        "detail": "database",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "importPath": "database.database",
+        "description": "database.database",
+        "isExtraImport": true,
+        "detail": "database.database",
         "documentation": {}
     },
     {
         "label": "SessionLocal",
-        "importPath": "database",
-        "description": "database",
+        "importPath": "database.database",
+        "description": "database.database",
         "isExtraImport": true,
-        "detail": "database",
+        "detail": "database.database",
         "documentation": {}
     },
     {
@@ -577,15 +643,6 @@
         "importPath": "numpy",
         "description": "numpy",
         "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "pandas",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pandas",
-        "description": "pandas",
-        "detail": "pandas",
         "documentation": {}
     },
     {
@@ -624,6 +681,14 @@
         "documentation": {}
     },
     {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
         "label": "StandardScaler",
         "importPath": "sklearn.preprocessing",
         "description": "sklearn.preprocessing",
@@ -640,7 +705,63 @@
         "documentation": {}
     },
     {
+        "label": "LabelEncoder",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
         "label": "accuracy_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "accuracy_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "precision_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "recall_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "f1_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "classification_report",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "confusion_matrix",
         "importPath": "sklearn.metrics",
         "description": "sklearn.metrics",
         "isExtraImport": true,
@@ -686,6 +807,71 @@
         "importPath": "warnings",
         "description": "warnings",
         "detail": "warnings",
+        "documentation": {}
+    },
+    {
+        "label": "XGBClassifier",
+        "importPath": "xgboost",
+        "description": "xgboost",
+        "isExtraImport": true,
+        "detail": "xgboost",
+        "documentation": {}
+    },
+    {
+        "label": "carregar_dados_bd",
+        "importPath": "sensor_service",
+        "description": "sensor_service",
+        "isExtraImport": true,
+        "detail": "sensor_service",
+        "documentation": {}
+    },
+    {
+        "label": "carregar_dados_bd",
+        "importPath": "sensor_service",
+        "description": "sensor_service",
+        "isExtraImport": true,
+        "detail": "sensor_service",
+        "documentation": {}
+    },
+    {
+        "label": "carregar_dados_bd",
+        "importPath": "sensor_service",
+        "description": "sensor_service",
+        "isExtraImport": true,
+        "detail": "sensor_service",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "PredictionService",
+        "importPath": "services.prediction_service",
+        "description": "services.prediction_service",
+        "isExtraImport": true,
+        "detail": "services.prediction_service",
+        "documentation": {}
+    },
+    {
+        "label": "PredictionService",
+        "importPath": "src.services.prediction_service",
+        "description": "src.services.prediction_service",
+        "isExtraImport": true,
+        "detail": "src.services.prediction_service",
+        "documentation": {}
+    },
+    {
+        "label": "TrainService",
+        "importPath": "src.services.train_service",
+        "description": "src.services.train_service",
+        "isExtraImport": true,
+        "detail": "src.services.train_service",
         "documentation": {}
     },
     {
@@ -908,21 +1094,39 @@
         "documentation": {}
     },
     {
-        "label": "read_root",
-        "kind": 2,
-        "importPath": "src.api.main",
-        "description": "src.api.main",
-        "peekOfCode": "def read_root():\n    return {\"Hello\": \"World\"}",
-        "detail": "src.api.main",
+        "label": "config_path",
+        "kind": 5,
+        "importPath": "src.database.database",
+        "description": "src.database.database",
+        "peekOfCode": "config_path = Path(__file__).resolve().parent.parent / \"config\" / \"config.json\"\nwith open (config_path, \"r\") as f:\n    config = json.load(f)\nDATABASE_URL = f\"postgresql://{config['DB_USER']}:{config['DB_PASSWORD']}@localhost:{config['DB_PORT']}/{config['DB_NAME']}\"\nengine = create_engine(DATABASE_URL)\nSessionLocal = sessionmaker(bind=engine)",
+        "detail": "src.database.database",
         "documentation": {}
     },
     {
-        "label": "app",
+        "label": "DATABASE_URL",
         "kind": 5,
-        "importPath": "src.api.main",
-        "description": "src.api.main",
-        "peekOfCode": "app = FastAPI()\n@app.get(\"/\")\ndef read_root():\n    return {\"Hello\": \"World\"}",
-        "detail": "src.api.main",
+        "importPath": "src.database.database",
+        "description": "src.database.database",
+        "peekOfCode": "DATABASE_URL = f\"postgresql://{config['DB_USER']}:{config['DB_PASSWORD']}@localhost:{config['DB_PORT']}/{config['DB_NAME']}\"\nengine = create_engine(DATABASE_URL)\nSessionLocal = sessionmaker(bind=engine)",
+        "detail": "src.database.database",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "kind": 5,
+        "importPath": "src.database.database",
+        "description": "src.database.database",
+        "peekOfCode": "engine = create_engine(DATABASE_URL)\nSessionLocal = sessionmaker(bind=engine)",
+        "detail": "src.database.database",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "kind": 5,
+        "importPath": "src.database.database",
+        "description": "src.database.database",
+        "peekOfCode": "SessionLocal = sessionmaker(bind=engine)",
+        "detail": "src.database.database",
         "documentation": {}
     },
     {
@@ -1079,6 +1283,24 @@
         "documentation": {}
     },
     {
+        "label": "is_state",
+        "kind": 2,
+        "importPath": "src.services.fault_labels",
+        "description": "src.services.fault_labels",
+        "peekOfCode": "def is_state(fault: str) -> bool:\n    \"\"\"Retorna True quando o rótulo representa um estado operacional do\n    sistema (não uma falha), conforme a seção 6 do enunciado da prova.\"\"\"\n    return isinstance(fault, str) and fault.strip().lower() in STATE_LABELS",
+        "detail": "src.services.fault_labels",
+        "documentation": {}
+    },
+    {
+        "label": "STATE_LABELS",
+        "kind": 5,
+        "importPath": "src.services.fault_labels",
+        "description": "src.services.fault_labels",
+        "peekOfCode": "STATE_LABELS = {\"normal\", \"baseline\", \"teste\", \"acelerando\", \"motor_desligado\"}\ndef is_state(fault: str) -> bool:\n    \"\"\"Retorna True quando o rótulo representa um estado operacional do\n    sistema (não uma falha), conforme a seção 6 do enunciado da prova.\"\"\"\n    return isinstance(fault, str) and fault.strip().lower() in STATE_LABELS",
+        "detail": "src.services.fault_labels",
+        "documentation": {}
+    },
+    {
         "label": "LLMService",
         "kind": 6,
         "importPath": "src.services.llm_service",
@@ -1106,6 +1328,15 @@
         "documentation": {}
     },
     {
+        "label": "PredictionService",
+        "kind": 6,
+        "importPath": "src.services.prediction_service",
+        "description": "src.services.prediction_service",
+        "peekOfCode": "class PredictionService:\n    def __init__(self):\n        data = TrainService.load_model()\n        self.model = data[\"model\"]\n        self.encoder = data[\"encoder\"]\n        self.features = data[\"features\"]\n    def predict(self, sensor_data):\n        faltando = set(self.features) - set(sensor_data.keys())\n        if faltando:\n            raise ValueError(",
+        "detail": "src.services.prediction_service",
+        "documentation": {}
+    },
+    {
         "label": "RAGService",
         "kind": 6,
         "importPath": "src.services.rag_service",
@@ -1119,7 +1350,7 @@
         "kind": 2,
         "importPath": "src.services.sensor_service",
         "description": "src.services.sensor_service",
-        "peekOfCode": "def parse_float(val):\n    if val == '' or val is None:\n        return None\n    try:\n        return float(val)\n    except ValueError:\n        return None\ndef importar_sensor_data(csv_path):\n    print(f\"Creating tables if they don't exist...\")\n    Base.metadata.create_all(bind=engine)",
+        "peekOfCode": "def parse_float(val):\n    if val == '' or val is None:\n        return None\n    try:\n        return float(val)\n    except ValueError:\n        return None\ndef importar_sensor_data(csv_path):\n    print(f\"Criando tabelas caso elas não existam...\")\n    Base.metadata.create_all(bind=engine)",
         "detail": "src.services.sensor_service",
         "documentation": {}
     },
@@ -1128,7 +1359,16 @@
         "kind": 2,
         "importPath": "src.services.sensor_service",
         "description": "src.services.sensor_service",
-        "peekOfCode": "def importar_sensor_data(csv_path):\n    print(f\"Creating tables if they don't exist...\")\n    Base.metadata.create_all(bind=engine)\n    print(f\"Reading CSV from {csv_path}...\")\n    session = SessionLocal()\n    try:\n        # previnir inserção duplicada\n        if session.query(SensorData).first():\n            print(\"A tabela do Sensor já tem dados. Pulando import...\")\n            return",
+        "peekOfCode": "def importar_sensor_data(csv_path):\n    print(f\"Criando tabelas caso elas não existam...\")\n    Base.metadata.create_all(bind=engine)\n    print(f\"Lendo o CSV {csv_path}...\")\n    session = SessionLocal()\n    try:\n        # previnir inserção duplicada\n        if session.query(SensorData).first():\n            print(\"A tabela do Sensor já tem dados. Pulando import...\")\n            return",
+        "detail": "src.services.sensor_service",
+        "documentation": {}
+    },
+    {
+        "label": "carregar_dados_bd",
+        "kind": 2,
+        "importPath": "src.services.sensor_service",
+        "description": "src.services.sensor_service",
+        "peekOfCode": "def carregar_dados_bd():\n    \"\"\"\n    Cria a conexão, carrega todos os dados do BD e retorna uma conexão com o Pandas.\n    \"\"\"\n    print(\"Carregando dados do Banco de Dados...\")\n    session = SessionLocal()\n    try:\n        # pandas nativo para ler direto do banco, bypassando o ORM\n        df = pd.read_sql(session.query(SensorData).statement, session.bind)\n    finally:",
         "detail": "src.services.sensor_service",
         "documentation": {}
     },
@@ -1142,6 +1382,24 @@
         "documentation": {}
     },
     {
+        "label": "TrainService",
+        "kind": 6,
+        "importPath": "src.services.train_service",
+        "description": "src.services.train_service",
+        "peekOfCode": "class TrainService:\n    # Decidi usar o XGBClassifier, pois após alguns (muitos) testes foi o melhor modelo que encontrei com uma acurácia e F1 de 87% nas configs atuais.\n    # (O modelo ainda pode ser melhorado)\n    MODEL_DIR = os.path.abspath(\n        os.path.join(os.getcwd(), \"vectorstore\")\n    )\n    MODEL_PATH = os.path.join(MODEL_DIR, \"fault_model.pkl\")\n    METRICS_PATH = os.path.join(MODEL_DIR, \"training_metrics.json\")\n    MIN_SAMPLES = 30\n    @staticmethod",
+        "detail": "src.services.train_service",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "kind": 5,
+        "importPath": "src.services.train_service",
+        "description": "src.services.train_service",
+        "peekOfCode": "path = os.path.abspath(os.path.join(os.getcwd(), \"..\", \"src\"))\nif path not in sys.path:\n    sys.path.append(path)\nfrom sensor_service import carregar_dados_bd\nclass TrainService:\n    # Decidi usar o XGBClassifier, pois após alguns (muitos) testes foi o melhor modelo que encontrei com uma acurácia e F1 de 87% nas configs atuais.\n    # (O modelo ainda pode ser melhorado)\n    MODEL_DIR = os.path.abspath(\n        os.path.join(os.getcwd(), \"vectorstore\")\n    )",
+        "detail": "src.services.train_service",
+        "documentation": {}
+    },
+    {
         "label": "VectorStoreService",
         "kind": 6,
         "importPath": "src.services.vectorstore_service",
@@ -1151,30 +1409,102 @@
         "documentation": {}
     },
     {
-        "label": "DATABASE_URL",
-        "kind": 5,
-        "importPath": "src.database",
-        "description": "src.database",
-        "peekOfCode": "DATABASE_URL = f\"postgresql://{config['DB_USER']}:{config['DB_PASSWORD']}@postgres:{config['DB_PORT']}/{config['DB_NAME']}\"\nengine = create_engine(DATABASE_URL)\nSessionLocal = sessionmaker(bind=engine)",
-        "detail": "src.database",
+        "label": "carregar_dados",
+        "kind": 2,
+        "importPath": "src.views.dashboard_view",
+        "description": "src.views.dashboard_view",
+        "peekOfCode": "def carregar_dados():\n    return carregar_dados_bd()\ndf = carregar_dados()\ndf[\"is_state\"] = df[\"fault\"].apply(is_state)\nst.button(\"Abrir o chat\", icon=\":material/smart_toy:\", type=\"primary\")\ncol1, col2, col3 = st.columns(3) # gera colunas para métricas\ncol1.metric(\"Todas as Leituras\", len(df), icon=\":material/settings:\", border=True)\ncol2.metric(\"Registros Normais\", int((~df[\"is_state\"]).sum()), icon=\":material/check_circle:\", border=True)\ncol3.metric(\"Registros de Erro\", int(df[\"is_state\"].sum()), icon=\":material/cancel:\", border=True)\n#falhas",
+        "detail": "src.views.dashboard_view",
         "documentation": {}
     },
     {
-        "label": "engine",
+        "label": "_SRC_DIR",
         "kind": 5,
-        "importPath": "src.database",
-        "description": "src.database",
-        "peekOfCode": "engine = create_engine(DATABASE_URL)\nSessionLocal = sessionmaker(bind=engine)",
-        "detail": "src.database",
+        "importPath": "src.views.dashboard_view",
+        "description": "src.views.dashboard_view",
+        "peekOfCode": "_SRC_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))\nsys.path.append(_SRC_DIR)\nsys.path.append(os.path.join(_SRC_DIR, 'services'))\nimport streamlit as st\nimport pandas as pd\nfrom datetime import datetime\nfrom sensor_service import carregar_dados_bd\nfrom services.fault_labels import is_state\nfrom services.train_service import TrainService\nfrom services.prediction_service import PredictionService",
+        "detail": "src.views.dashboard_view",
         "documentation": {}
     },
     {
-        "label": "SessionLocal",
+        "label": "df",
         "kind": 5,
-        "importPath": "src.database",
-        "description": "src.database",
-        "peekOfCode": "SessionLocal = sessionmaker(bind=engine)",
-        "detail": "src.database",
+        "importPath": "src.views.dashboard_view",
+        "description": "src.views.dashboard_view",
+        "peekOfCode": "df = carregar_dados()\ndf[\"is_state\"] = df[\"fault\"].apply(is_state)\nst.button(\"Abrir o chat\", icon=\":material/smart_toy:\", type=\"primary\")\ncol1, col2, col3 = st.columns(3) # gera colunas para métricas\ncol1.metric(\"Todas as Leituras\", len(df), icon=\":material/settings:\", border=True)\ncol2.metric(\"Registros Normais\", int((~df[\"is_state\"]).sum()), icon=\":material/check_circle:\", border=True)\ncol3.metric(\"Registros de Erro\", int(df[\"is_state\"].sum()), icon=\":material/cancel:\", border=True)\n#falhas\nfalhas = df[~df[\"is_state\"]]\nst.subheader(\"Quantidade de ocorrências por registro\")",
+        "detail": "src.views.dashboard_view",
+        "documentation": {}
+    },
+    {
+        "label": "df[\"is_state\"]",
+        "kind": 5,
+        "importPath": "src.views.dashboard_view",
+        "description": "src.views.dashboard_view",
+        "peekOfCode": "df[\"is_state\"] = df[\"fault\"].apply(is_state)\nst.button(\"Abrir o chat\", icon=\":material/smart_toy:\", type=\"primary\")\ncol1, col2, col3 = st.columns(3) # gera colunas para métricas\ncol1.metric(\"Todas as Leituras\", len(df), icon=\":material/settings:\", border=True)\ncol2.metric(\"Registros Normais\", int((~df[\"is_state\"]).sum()), icon=\":material/check_circle:\", border=True)\ncol3.metric(\"Registros de Erro\", int(df[\"is_state\"].sum()), icon=\":material/cancel:\", border=True)\n#falhas\nfalhas = df[~df[\"is_state\"]]\nst.subheader(\"Quantidade de ocorrências por registro\")\nst.bar_chart(falhas[\"fault\"].value_counts())",
+        "detail": "src.views.dashboard_view",
+        "documentation": {}
+    },
+    {
+        "label": "falhas",
+        "kind": 5,
+        "importPath": "src.views.dashboard_view",
+        "description": "src.views.dashboard_view",
+        "peekOfCode": "falhas = df[~df[\"is_state\"]]\nst.subheader(\"Quantidade de ocorrências por registro\")\nst.bar_chart(falhas[\"fault\"].value_counts())\nst.subheader(\"Linha do tempo por registros\")\ntipo = st.selectbox(\"Filtrar por falha\", [\"Todas\"] + sorted(falhas[\"fault\"].unique()))\ndados_freq = falhas if tipo == \"Todas\" else falhas[falhas[\"fault\"] == tipo]\nserie = dados_freq.set_index(\"created_at\").resample(\"D\").size()\nst.line_chart(serie)\n# infos do modelo\nmetrics = TrainService.get_metrics()",
+        "detail": "src.views.dashboard_view",
+        "documentation": {}
+    },
+    {
+        "label": "tipo",
+        "kind": 5,
+        "importPath": "src.views.dashboard_view",
+        "description": "src.views.dashboard_view",
+        "peekOfCode": "tipo = st.selectbox(\"Filtrar por falha\", [\"Todas\"] + sorted(falhas[\"fault\"].unique()))\ndados_freq = falhas if tipo == \"Todas\" else falhas[falhas[\"fault\"] == tipo]\nserie = dados_freq.set_index(\"created_at\").resample(\"D\").size()\nst.line_chart(serie)\n# infos do modelo\nmetrics = TrainService.get_metrics()\nif metrics:\n    st.subheader(\"Qualidade do modelo\")\n    st.markdown(\"Podemos verificar que está dentro do esperado para um modelo com essas medições\")\n    col1, col2, col3, col4 = st.columns(4)",
+        "detail": "src.views.dashboard_view",
+        "documentation": {}
+    },
+    {
+        "label": "dados_freq",
+        "kind": 5,
+        "importPath": "src.views.dashboard_view",
+        "description": "src.views.dashboard_view",
+        "peekOfCode": "dados_freq = falhas if tipo == \"Todas\" else falhas[falhas[\"fault\"] == tipo]\nserie = dados_freq.set_index(\"created_at\").resample(\"D\").size()\nst.line_chart(serie)\n# infos do modelo\nmetrics = TrainService.get_metrics()\nif metrics:\n    st.subheader(\"Qualidade do modelo\")\n    st.markdown(\"Podemos verificar que está dentro do esperado para um modelo com essas medições\")\n    col1, col2, col3, col4 = st.columns(4)\n    col1.metric(\"Acurácia\", f\"{metrics['accuracy']:.2%}\", border=True)",
+        "detail": "src.views.dashboard_view",
+        "documentation": {}
+    },
+    {
+        "label": "serie",
+        "kind": 5,
+        "importPath": "src.views.dashboard_view",
+        "description": "src.views.dashboard_view",
+        "peekOfCode": "serie = dados_freq.set_index(\"created_at\").resample(\"D\").size()\nst.line_chart(serie)\n# infos do modelo\nmetrics = TrainService.get_metrics()\nif metrics:\n    st.subheader(\"Qualidade do modelo\")\n    st.markdown(\"Podemos verificar que está dentro do esperado para um modelo com essas medições\")\n    col1, col2, col3, col4 = st.columns(4)\n    col1.metric(\"Acurácia\", f\"{metrics['accuracy']:.2%}\", border=True)\n    col2.metric(\"Precisão\", f\"{metrics['precision']:.2%}\", border=True)",
+        "detail": "src.views.dashboard_view",
+        "documentation": {}
+    },
+    {
+        "label": "metrics",
+        "kind": 5,
+        "importPath": "src.views.dashboard_view",
+        "description": "src.views.dashboard_view",
+        "peekOfCode": "metrics = TrainService.get_metrics()\nif metrics:\n    st.subheader(\"Qualidade do modelo\")\n    st.markdown(\"Podemos verificar que está dentro do esperado para um modelo com essas medições\")\n    col1, col2, col3, col4 = st.columns(4)\n    col1.metric(\"Acurácia\", f\"{metrics['accuracy']:.2%}\", border=True)\n    col2.metric(\"Precisão\", f\"{metrics['precision']:.2%}\", border=True)\n    col3.metric(\"Recall\", f\"{metrics['recall']:.2%}\", border=True)\n    col4.metric(\"F1\", f\"{metrics['f1']:.2%}\", border=True)\n    st.subheader(\"Importância das features\")",
+        "detail": "src.views.dashboard_view",
+        "documentation": {}
+    },
+    {
+        "label": "ultima",
+        "kind": 5,
+        "importPath": "src.views.dashboard_view",
+        "description": "src.views.dashboard_view",
+        "peekOfCode": "ultima = df.iloc[-1].drop([\"fault\", \"is_state\"]).to_dict()\nresultado = PredictionService().predict(ultima)\ncol1, col2 = st.columns(2)\ncol1.metric(\"Tipo de defeito previsto\", resultado[\"fault\"])\ncol2.metric(\"Confiança\", f\"{resultado['confidence']:.2%}\")\nif resultado[\"is_state\"]:\n    st.info(\"Estado operacional — nenhuma ação necessária.\")\nelse:\n    st.warning(\"Falha real detectada — consulte a aba Chat para instruções de correção.\")",
+        "detail": "src.views.dashboard_view",
+        "documentation": {}
+    },
+    {
+        "label": "resultado",
+        "kind": 5,
+        "importPath": "src.views.dashboard_view",
+        "description": "src.views.dashboard_view",
+        "peekOfCode": "resultado = PredictionService().predict(ultima)\ncol1, col2 = st.columns(2)\ncol1.metric(\"Tipo de defeito previsto\", resultado[\"fault\"])\ncol2.metric(\"Confiança\", f\"{resultado['confidence']:.2%}\")\nif resultado[\"is_state\"]:\n    st.info(\"Estado operacional — nenhuma ação necessária.\")\nelse:\n    st.warning(\"Falha real detectada — consulte a aba Chat para instruções de correção.\")",
+        "detail": "src.views.dashboard_view",
         "documentation": {}
     },
     {
@@ -1200,7 +1530,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "chunk_service = ChunkService()\nchunks = chunk_service.gerar_chunks(documentos)\n# embeddings + vectorstore\nprint(\"Gerando embeddings e vectorstore...\")\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])",
+        "peekOfCode": "chunk_service = ChunkService()\nchunks = chunk_service.gerar_chunks(documentos)\n# embeddings + vectorstore\nprint(\"Gerando embeddings e vectorstore...\")\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nprint(\"Vectorstore criado\")",
         "detail": "src.main",
         "documentation": {}
     },
@@ -1209,7 +1539,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "chunks = chunk_service.gerar_chunks(documentos)\n# embeddings + vectorstore\nprint(\"Gerando embeddings e vectorstore...\")\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\n# RAG",
+        "peekOfCode": "chunks = chunk_service.gerar_chunks(documentos)\n# embeddings + vectorstore\nprint(\"Gerando embeddings e vectorstore...\")\nembedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nprint(\"Vectorstore criado\")\nvector_service.salvar(config[\"VECTOR_DIR\"])",
         "detail": "src.main",
         "documentation": {}
     },
@@ -1218,7 +1548,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "embedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\n# RAG\nprint(\"Iniciando RAG...\")\nllm_service = LLMService(config[\"MODEL\"])\nrag = RAGService(",
+        "peekOfCode": "embedding_service = EmbeddingService(config[\"EMBEDDING_MODEL\"])\nvector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nprint(\"Vectorstore criado\")\nvector_service.salvar(config[\"VECTOR_DIR\"])\nprint(\"Vectorstore salvo\")\n# RAG\nprint(\"Iniciando RAG...\")",
         "detail": "src.main",
         "documentation": {}
     },
@@ -1227,7 +1557,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "vector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nvector_service.salvar(config[\"VECTOR_DIR\"])\n# RAG\nprint(\"Iniciando RAG...\")\nllm_service = LLMService(config[\"MODEL\"])\nrag = RAGService(\n    llm_service,",
+        "peekOfCode": "vector_service = VectorStoreService(\n    embedding_service.get_embeddings()\n)\nvector_service.criar(chunks)\nprint(\"Vectorstore criado\")\nvector_service.salvar(config[\"VECTOR_DIR\"])\nprint(\"Vectorstore salvo\")\n# RAG\nprint(\"Iniciando RAG...\")\nllm_service = LLMService(config[\"MODEL\"])",
         "detail": "src.main",
         "documentation": {}
     },
@@ -1236,7 +1566,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "llm_service = LLMService(config[\"MODEL\"])\nrag = RAGService(\n    llm_service,\n    vector_service\n)\nprint(\n    rag.perguntar(\n        \"Como corrigir o problema de cocked_rotor?\"\n    )\n)",
+        "peekOfCode": "llm_service = LLMService(config[\"MODEL\"])\nrag = RAGService(\n    llm_service,\n    vector_service\n)\n# Modelo de predição\nprint(\"Validando se o modelo já foi treinado...\")\nif TrainService.is_trained():\n    print(\"Modelo já treinado...\")\n    metrics = TrainService.get_metrics()",
         "detail": "src.main",
         "documentation": {}
     },
@@ -1245,7 +1575,43 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "rag = RAGService(\n    llm_service,\n    vector_service\n)\nprint(\n    rag.perguntar(\n        \"Como corrigir o problema de cocked_rotor?\"\n    )\n)",
+        "peekOfCode": "rag = RAGService(\n    llm_service,\n    vector_service\n)\n# Modelo de predição\nprint(\"Validando se o modelo já foi treinado...\")\nif TrainService.is_trained():\n    print(\"Modelo já treinado...\")\n    metrics = TrainService.get_metrics()\n    print(f\"({metrics['algorithm']}) \")",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "df = carregar_dados_bd()\nprediction = PredictionService()\nultima_leitura = df.iloc[-1].drop(\"fault\").to_dict()\nresultado = prediction.predict(ultima_leitura)\nprint(resultado)\n# A leitura só é encaminhada ao RAG se representar um problema real;\n# estados operacionais (normal, baseline, teste, acelerando, motor_desligado)\n# não geram consulta de correção.\nif resultado[\"is_state\"]:\n    print(",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "prediction",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "prediction = PredictionService()\nultima_leitura = df.iloc[-1].drop(\"fault\").to_dict()\nresultado = prediction.predict(ultima_leitura)\nprint(resultado)\n# A leitura só é encaminhada ao RAG se representar um problema real;\n# estados operacionais (normal, baseline, teste, acelerando, motor_desligado)\n# não geram consulta de correção.\nif resultado[\"is_state\"]:\n    print(\n        f\"Leitura corresponde ao estado operacional '{resultado['fault']}'. \"",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "ultima_leitura",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "ultima_leitura = df.iloc[-1].drop(\"fault\").to_dict()\nresultado = prediction.predict(ultima_leitura)\nprint(resultado)\n# A leitura só é encaminhada ao RAG se representar um problema real;\n# estados operacionais (normal, baseline, teste, acelerando, motor_desligado)\n# não geram consulta de correção.\nif resultado[\"is_state\"]:\n    print(\n        f\"Leitura corresponde ao estado operacional '{resultado['fault']}'. \"\n        \"Nenhuma ação de manutenção é necessária.\"",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "resultado",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "resultado = prediction.predict(ultima_leitura)\nprint(resultado)\n# A leitura só é encaminhada ao RAG se representar um problema real;\n# estados operacionais (normal, baseline, teste, acelerando, motor_desligado)\n# não geram consulta de correção.\nif resultado[\"is_state\"]:\n    print(\n        f\"Leitura corresponde ao estado operacional '{resultado['fault']}'. \"\n        \"Nenhuma ação de manutenção é necessária.\"\n    )",
         "detail": "src.main",
         "documentation": {}
     }

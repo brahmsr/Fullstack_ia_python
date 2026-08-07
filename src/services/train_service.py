@@ -16,19 +16,17 @@ import joblib
 import json
 import pandas as pd
 
-path = os.path.abspath(os.path.join(os.getcwd(), "..", "src"))
-if path not in sys.path:
-    sys.path.append(path)
+SRC_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if SRC_DIR not in sys.path:
+    sys.path.append(SRC_DIR)
 
-from sensor_service import carregar_dados_bd
+from services.sensor_service import carregar_dados_bd
 
 class TrainService:
     # Decidi usar o XGBClassifier, pois após alguns (muitos) testes foi o melhor modelo que encontrei com uma acurácia e F1 de 87% nas configs atuais.
     # (O modelo ainda pode ser melhorado)
-    
-    MODEL_DIR = os.path.abspath(
-        os.path.join(os.getcwd(), "vectorstore")
-    )
+
+    MODEL_DIR = os.path.join(os.path.dirname(SRC_DIR), "vectorstore")
     MODEL_PATH = os.path.join(MODEL_DIR, "fault_model.pkl")
     METRICS_PATH = os.path.join(MODEL_DIR, "training_metrics.json")
     MIN_SAMPLES = 30

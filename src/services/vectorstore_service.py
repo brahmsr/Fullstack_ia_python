@@ -1,4 +1,5 @@
 from langchain_community.vectorstores import FAISS
+import os
 
 class VectorStoreService:
 
@@ -6,6 +7,10 @@ class VectorStoreService:
 
         self.embeddings = embeddings
         self.vectorstore = None
+
+    def existe_vectorstore(self, pasta):
+        return os.path.exists(os.path.join(pasta, "index.faiss")) and \
+        os.path.exists(os.path.join(pasta, "index.pkl"))
 
     def criar_vectorstore(self, chunks):
 
