@@ -11,8 +11,8 @@
 - [x] implementar modelo preditivo
 - [x] treinar modelo preditivo
 - [x] testar modelo preditivo
-- [ ] configurar StreamLit (melhor para interface e plotagem de gráficos)
-- [ ] integrar tudo
+- [x] configurar StreamLit (melhor para interface e plotagem de gráficos)
+- [x] integrar tudo
 
 ## Programas necessários
 
