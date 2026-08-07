@@ -1,15 +1,24 @@
 import os
 import subprocess
 import sys
-import pygame
 
 SRC_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(SRC_DIR)
 
 #musiquinha de elevador
-pygame.mixer.init()
-pygame.mixer.music.load(os.path.join(SRC_DIR, "misc", "waitmusic.mp3"))
-pygame.mixer.music.play(-1)
+# Containers não têm dispositivo de áudio: pygame.mixer.init() abortaria o
+# processo antes de qualquer coisa útil acontecer. APP_DISABLE_AUDIO=1 pula
+# essa etapa, e o try/except cobre o caso de o pygame nem estar instalado.
+audio_ativo = False
+if os.getenv("APP_DISABLE_AUDIO", "0").strip().lower() not in ("1", "true", "yes"):
+    try:
+        import pygame
+        pygame.mixer.init()
+        pygame.mixer.music.load(os.path.join(SRC_DIR, "misc", "waitmusic.mp3"))
+        pygame.mixer.music.play(-1)
+        audio_ativo = True
+    except Exception as e:
+        print(f"Áudio indisponível ({e}). Seguindo sem música de espera.")
 
 print("Iniciando os imports...")
 
@@ -95,7 +104,8 @@ else:
         )
     )
 
-pygame.mixer.music.stop()
+if audio_ativo:
+    pygame.mixer.music.stop()
 
 #start frontend
 subprocess.run(

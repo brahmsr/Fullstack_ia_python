@@ -1,6 +1,15 @@
-version: '3.8'
+# ===========================================================================
+# Stack completa: PostgreSQL + pgAdmin + Ollama + aplicação (pipeline+Streamlit)
+# docker compose up --build
+# -> Streamlit em http://localhost:8501
+# -> pgAdmin em http://localhost:5050
+# ===========================================================================
 
 services:
+
+  # -------------------------------------------------------------------------
+  # Banco de dados
+  # -------------------------------------------------------------------------
   postgres:
     image: postgres:15
     container_name: postgres_db
@@ -9,25 +18,127 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
     ports:
-      - "${DB_PORT}:${DB_PORT}"
+      # Dentro da rede Docker o Postgres é sempre 5432; DB_PORT_HOST controla
+      # apenas a publicação no host (útil se já houver um Postgres local).
+      - "${DB_PORT_HOST:-5432}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+    healthcheck:
+      # `pg_isready` sozinho responde antes do initdb terminar; o `-d` força
+      # a checagem contra a base da aplicação, que só existe ao final.
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
     restart: unless-stopped
-  
+
+  # -------------------------------------------------------------------------
+  # Administração do banco (opcional no dia a dia)
+  # -------------------------------------------------------------------------
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_LISTEN_PORT: 80
     ports:
-      - "${PGADMIN_PORT}:80"
+      - "${PGADMIN_PORT:-5050}:80"
     volumes:
       - pgadmin_data:/var/lib/pgadmin
-    restart: unless-stopped
+    networks:
+      - backend
+      - frontend
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # -------------------------------------------------------------------------
+  # Servidor de inferência local (LLM + embeddings)
+  # -------------------------------------------------------------------------
+  ollama:
+    image: ollama/ollama:latest
+    container_name: fiesc_ollama
+    volumes:
+      # Os modelos (~6GB) ficam num volume nomeado: sobrevivem a `down` e a
+      # rebuilds, evitando rebaixar tudo a cada subida da stack.
+      - ollama_models:/root/.ollama
+    ports:
+      # 11435 por padrão para não colidir com um Ollama já rodando no host
+      # na porta 11434. A aplicação não usa esta porta — fala pela rede interna.
+      - "${OLLAMA_PORT_HOST:-11435}:11434"
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "ollama list >/dev/null 2>&1 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    restart: unless-stopped
+    # Para usar GPU NVIDIA, descomente o bloco abaixo (exige NVIDIA Container
+    # Toolkit instalado). Sem ele, o Ollama roda em CPU. (Tenho uma RX590GME então rodei direto na CPU para criar um app leve de verdade)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+  # -------------------------------------------------------------------------
+  # Aplicação: pipeline de ingestão/predição + frontend Streamlit
+  # -------------------------------------------------------------------------
+  app:
+    build:
+      context: .
+      target: runtime
+    image: fiesc/manutencao-prescritiva:latest
+    container_name: fiesc_app
+    env_file:
+      - .env
+    environment:
+      # Sobrescrevem o .env: dentro da rede Docker o host é o NOME do serviço
+      # Não localhost. É por isso que src/database/database.py passa a ler
+      # DB_HOST/DB_PORT do ambiente.
+      DB_HOST: postgres
+      DB_PORT: 5432
+      # O client oficial do Ollama usa OLLAMA_HOST como fallback quando
+      # base_url não é informado — então ChatOllama e OllamaEmbeddings
+      # passa a apontar para o container sem nenhuma alteração de código.
+      OLLAMA_HOST: http://ollama:11434
+      APP_DISABLE_AUDIO: "1"
+    ports:
+      - "${APP_PORT:-8501}:8501"
+    volumes:
+      # Bind mount: o índice FAISS e o fault_model.pkl versionados no repositório precisam estar disponíveis já na primeira subida. Um volume nomeado começaria vazio e forçaria o retreino do modelo e a reingestão dos PDFs.
+      - ./vectorstore:/app/vectorstore
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ollama:
+        condition: service_healthy
+    networks:
+      - backend
+      - frontend
+    # reforça o init como PID 1 mesmo se o ENTRYPOINT for sobrescrito.
+    init: true
+    restart: unless-stopped
+
+networks:
+  # Serviços expostos ao usuário
+  frontend:
+    driver: bridge
+  # comunicação entre os serviços. Não marcado como `internal` porque o container do Ollama precisa de saída para a internet para baixar modelos.
+  backend:
+    driver: bridge
 
 volumes:
   postgres_data:
   pgadmin_data:
+  ollama_models:

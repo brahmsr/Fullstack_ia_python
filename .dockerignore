@@ -1,0 +1,55 @@
+# ---------------------------------------------------------------
+# Build context do Docker.
+# Tudo aqui NÃO é enviado ao daemon nem entra na imagem.
+# Objetivo: contexto pequeno = build rápido e cache estável.
+# ---------------------------------------------------------------
+
+# Ambiente virtual local (Windows) — nunca deve entrar na imagem Linux
+.venv/
+venv/
+env/
+
+# Cache e artefatos de Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Git e metadados
+.git/
+.gitignore
+.gitattributes
+
+# IDEs
+.idea/
+.vscode/
+
+# Segredos: NUNCA copiar para dentro da imagem.
+# As variáveis chegam em runtime, via env_file do compose.
+.env
+*.env
+!.env.example
+
+# Notebooks e artefatos de experimentação (não usados em runtime)
+notebooks/
+figures/
+
+# Vectorstore e modelo treinado: montados como volume (ver docker-compose.yml).
+# Ficam fora da imagem porque são gerados/atualizados em runtime (~87MB).
+vectorstore/
+
+# Dados redundantes: banner.xlsx (21MB) é a mesma base do banner.csv,
+# e apenas o CSV é lido pelo sensor_service.
+src/data/*.xlsx
+
+# Documentação e material de apoio
+*.pdf
+!src/data/*.pdf
+README.md
+docker-compose.override.yml
+
+# Docker
+Dockerfile*
+.dockerignore

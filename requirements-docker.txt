@@ -1,0 +1,47 @@
+# ---------------------------------------------------------------------------
+# Dependências de RUNTIME do container.
+#
+# Por que um arquivo separado do requirements.txt?
+#
+#  1. requirements.txt é um `pip freeze` do ambiente Windows e contém pywinpty==3.0.5, que NÃO possui distribuição para Linux — o build falharia no `pip install`.
+#  2. Ele também traz torch, transformers, spacy, opencv, jupyter e unstructured (~5GB), que nenhum módulo de src/ importa diretamente.
+#  3. E, ao mesmo tempo, faltam nele xgboost e psycopg2, que o código usa.
+#
+# A lista abaixo foi derivada dos imports reais de src/**/*.py. Versões espelham o ambiente de desenvolvimento validado.
+# ---------------------------------------------------------------------------
+
+# --- Frontend (Streamlit) ---
+streamlit==1.61.0
+altair==6.2.2
+pyarrow==24.0.0
+watchdog==6.0.0
+
+# --- Manipulação e visualização de dados ---
+pandas==3.0.5
+numpy==2.4.6
+matplotlib==3.11.1
+seaborn==0.13.2
+
+# --- Banco de dados ---
+SQLAlchemy==2.0.51
+psycopg2-binary==2.9.12
+
+# --- Modelo preditivo ---
+scikit-learn==1.9.0
+imbalanced-learn==0.14.2
+xgboost==3.4.0
+joblib==1.5.3
+
+# --- RAG / LLM ---
+langchain==1.3.14
+langchain-classic==1.0.8
+langchain-community==0.4.2
+langchain-core==1.5.3
+langchain-ollama==1.1.0
+langchain-text-splitters==1.1.2
+faiss-cpu==1.15.0
+ollama==0.6.2
+
+# --- NÃO incluídos de propósito ---
+# pygame: só toca a música de espera; container não tem dispositivo de áudio. src/main.py já degrada com APP_DISABLE_AUDIO=1.
+# unstructured : necessário apenas para RECRIAR o vectorstore a partir dos PDFs (UnstructuredPDFLoader com strategy="hi_res"). O container usa o índice FAISS já pronto, montado em /app/vectorstore. Ver seção "Regerar o vectorstore" no README.
