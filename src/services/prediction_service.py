@@ -2,6 +2,7 @@ import joblib
 import pandas as pd
 
 from services.train_service import TrainService
+from services.fault_labels import is_state
 
 
 class PredictionService:
@@ -32,9 +33,13 @@ class PredictionService:
 
         probs = self.model.predict_proba(df)[0]
 
+        fault = self.encoder.inverse_transform([pred])[0]
+
         return {
 
-            "fault": self.encoder.inverse_transform([pred])[0],
+            "fault": fault,
+
+            "is_state": is_state(fault),
 
             "confidence": float(max(probs)),
 
